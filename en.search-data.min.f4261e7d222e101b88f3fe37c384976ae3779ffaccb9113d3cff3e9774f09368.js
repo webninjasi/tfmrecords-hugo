@@ -1,0 +1,1 @@
+'use strict';(function(){const indexCfg={cache:true};indexCfg.doc={id:'id',field:['title','content'],store:['title','href'],};const index=FlexSearch.create('balance',indexCfg);window.bookSearchIndex=index;index.add({'id':0,'href':'/hugotest/v/0/','title':"@0",'content':"TribeHouse No recs\n"});index.add({'id':1,'href':'/hugotest/v/','title':"Vanilla",'content':""});})();
