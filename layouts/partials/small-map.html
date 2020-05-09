@@ -7,7 +7,7 @@
 
         <div class="map-body">
             <h2 class="map-title">
-                <a href="{{ $.RelPermalink }}">{{ $.Title }}</a>
+                <a href="{{ $.RelPermalink }}">@{{ $.File.BaseFileName }}</a>
             </h2>
 
             {{ partial "records" $map.records }}
