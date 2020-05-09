@@ -9,7 +9,11 @@
 {{ else if and .IsSection .File }}
   {{ $title = path.Base .File.Dir | humanize | title }}
 {{ else if and .IsPage .File }}
-  {{ $title = .File.BaseFileName | humanize | title }}
+  {{ if and .Params .Params.categories }}
+    {{ $title = printf "@%s" .File.BaseFileName }}
+  {{ else }}
+    {{ $title = .File.BaseFileName | humanize | title }}
+  {{ end }}
 {{ end }}
 
 {{ return $title }}

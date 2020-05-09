@@ -1,6 +1,6 @@
 baseURL = "https://webninjasi.github.io/hugotest/"
 languageCode = "en-us"
-title = "Recs"
+title = "TFM Records"
 theme = "records"
 
 [taxonomies]
