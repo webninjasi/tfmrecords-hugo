@@ -11,9 +11,15 @@
   <ul>
     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
     {{ with $.Site.GetPage (printf "/categories/%s" $name) }}
+    {{ $cat := index $.Site.Data.categories $name }}
+    {{ if $cat }}
     <li>
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <a href="{{ .Permalink }}">
+        <i class="menu-icon" style="background-image: url({{ $cat.icon }});"></i>
+        {{ $cat.title }}
+      </a>
     </li>
+    {{ end }}
     {{ end }}
     {{ end }}
   </ul>
@@ -56,6 +62,9 @@
     <a href="{{ .Page.RelPermalink }}" class="
         {{- if and .Page.Params.bookCollapseSection .Page.IsSection }}collapsed {{ end }}
         {{- if eq .CurrentPage .Page }}active{{ end }}">
+      {{ if and .Page .Page.Params.icon }}
+        <i class="menu-icon" style="background-image: url({{ .Page.Params.icon }});"></i>
+      {{ end }}
       {{- partial "docs/title" .Page -}}
     </a>
   {{ else }}
