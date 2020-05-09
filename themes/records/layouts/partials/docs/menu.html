@@ -1,0 +1,64 @@
+<nav>
+{{ partial "docs/brand" . }}
+{{ partial "docs/search" . }}
+
+{{ partial "docs/inject/menu-before" . }}
+{{ partial "docs/menu-hugo" .Site.Menus.before }}
+
+{{ with .Site.GetPage "/" }}
+  {{ template "book-section-children" (dict "Section" . "CurrentPage" $) }}
+  <br>
+  <ul>
+    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+    {{ with $.Site.GetPage (printf "/categories/%s" $name) }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+    {{ end }}
+  </ul>
+{{ end }}
+
+{{ partial "docs/menu-hugo" .Site.Menus.after }}
+{{ partial "docs/inject/menu-after" . }}
+</nav>
+
+<!-- Restore menu position as soon as possible to avoid flickering -->
+{{ $script := resources.Get "menu-reset.js" | resources.Minify }}
+{{ with $script.Content }}
+  <script>{{ . | safeJS }}</script>
+{{ end }}
+
+{{ define "book-section-children" }}
+  {{ $self := eq .CurrentPage .Section }}
+  {{ $ancestor := .Section.IsAncestor .CurrentPage }}
+  {{ $collapsed := .Section.Params.bookCollapseSection }}
+
+  {{ if or $self $ancestor (not $collapsed) }}
+  <ul>
+    {{ range (where .Section.Pages "Params.bookhidden" "ne" true) }}
+      {{ if .IsSection }}
+        <li {{- if .Params.BookFlatSection }} class="book-section-flat" {{ end -}}>
+          {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) }}
+          {{ template "book-section-children" (dict "Section" . "CurrentPage" $.CurrentPage) }}
+        </li>
+      {{ else if and .IsPage .Content }}
+        <li>
+          {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) }}
+        </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+  {{ end }}
+{{ end }}
+{{ define "book-page-link" }}{{/* (dict "Page" .Page "CurrentPage" .CurrentPage) */}}
+  {{ if .Page.Content }}
+    <a href="{{ .Page.RelPermalink }}" class="
+        {{- if and .Page.Params.bookCollapseSection .Page.IsSection }}collapsed {{ end }}
+        {{- if eq .CurrentPage .Page }}active{{ end }}">
+      {{- partial "docs/title" .Page -}}
+    </a>
+  {{ else }}
+    <span>{{- partial "docs/title" .Page -}}</span>
+  {{ end }}
+{{ end }}

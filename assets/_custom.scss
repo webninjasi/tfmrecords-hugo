@@ -1,0 +1,44 @@
+
+.map-image:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.maps-list {
+    display: flex;
+}
+.maps-row {
+    display: flex;
+    flex-flow: row wrap;
+}
+.small-map {
+    flex: 1 0 0;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    margin: 5px;
+}
+.map-title {
+    text-align: center;
+}
+.map-body {
+    padding: 5px;
+    text-align: center;
+}
+
+.map-records {
+    display: flex;
+}
+.map-record {
+    flex: 1 0 0;
+}
+
+.table {
+    margin: 0 auto;
+    display: inline !important;
+}
+.table th {
+    border: 0 !important;
+    border-bottom: 2px solid #dee2e6 !important;
+}
+.table td, .table tr {
+    border: 0 !important;
+}

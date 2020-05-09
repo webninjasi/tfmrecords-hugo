@@ -1,0 +1,22 @@
+{{ with $map := index $.Site.Data.maps .Page.File.BaseFileName }}
+
+    <h1>{{ $.Page.Title }}</h1>
+    <img class="map-image" src="{{ $map.img }}">
+
+    <div class="map-records">
+        <div class="map-record">
+            <h2>Records</h2>
+            {{ partial "records" $map.records }}
+        </div>
+
+        <div class="map-record">
+            <h2>Flipped</h2>
+            {{ partial "records" $map.recordsFlipped }}
+        </div>
+    </div>
+
+{{ else }}
+
+    <a href="#report">Report this map</a>
+
+{{ end }}

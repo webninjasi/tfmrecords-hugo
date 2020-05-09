@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{ range $idx, $rec := . }}
+      <tr>
+        <td scope="row">{{ add 1 $idx }}</td>
+        <td>{{ $rec.name }}</td>
+        <td>{{ $rec.time }}</td>
+      </tr>
+      {{ end }}
+  </tbody>
+</table>

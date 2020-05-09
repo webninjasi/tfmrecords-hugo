@@ -1,10 +1,13 @@
 baseURL = "https://webninjasi.github.io/hugotest/"
 languageCode = "en-us"
 title = "Recs"
-theme = "book"
+theme = "records"
+
+[taxonomies]
+	category = "categories"
 
 [params]
-	BookToC = true
+	BookToC = false
 	BookSection = '*'
 	BookDateFormat = 'January 2, 2006'
 	BookSearch = true

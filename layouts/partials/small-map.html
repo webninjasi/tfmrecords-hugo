@@ -1,0 +1,17 @@
+{{ if and (eq .Kind "page") .Params.categories }}
+    {{ with $map := index $.Site.Data.maps .File.BaseFileName }}
+    <div class="markdown book-post small-map">
+        <a href="{{ $.RelPermalink }}">
+            <img class="map-image" src="{{ $map.img }}">
+        </a>
+
+        <div class="map-body">
+            <h2 class="map-title">
+                <a href="{{ $.RelPermalink }}">{{ $.Title }}</a>
+            </h2>
+
+            {{ partial "records" $map.records }}
+        </div>
+    </div>
+    {{ end }}
+{{ end }}

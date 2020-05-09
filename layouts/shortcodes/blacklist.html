@@ -1,0 +1,23 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Reason</th>
+      <th scope="col">By</th>
+      <th scope="col">Date</th>
+      <th scope="col">End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range .Site.Data.blacklist }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .reason }}</td>
+        <td>{{ .by }}</td>
+        <td class="date-convert">{{ .date }}</td>
+        <td class="date-convert">{{ .endDate }}</td>
+      </tr>
+    {{ end }}
+  </tbody>
+</table>

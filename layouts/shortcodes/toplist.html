@@ -1,0 +1,29 @@
+
+{{ $.Scratch.Set "completions" dict }}
+{{ range .Site.Data.maps }}
+    {{ range .records }}
+        {{ $completions := $.Scratch.Get "completions" }}
+        {{ $.Scratch.Set "completions" (merge $completions (dict .name (add 1 (or (index $completions .name) 0)))) }}
+    {{ end }}
+{{ end }}
+{{ $completions := .Scratch.Get "completions" }}
+
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Maps Completed</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ $idx := 1 }}
+        {{ range $name, $num := $completions }}
+        <tr>
+            <td>{{ $idx }}{{ $idx := add 1 $idx }}</td>
+            <td>{{ $name }}</td>
+            <td>{{ $num }}</td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>

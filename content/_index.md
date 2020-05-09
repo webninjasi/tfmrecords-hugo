@@ -1,11 +1,7 @@
 ---
-title: "Home"
+title: "TFM Records"
 ---
 
-# Second Anouncement
+## Hello!
 
-Lorem Ipsum Dolor
-
-# First Anouncement
-
-Lorem Ipsum
+Search must be better now...
