@@ -1,4 +1,4 @@
-baseURL = "https://webninjasi.github.io/hugotest/"
+baseURL = "https://webninjasi.github.io/tfmrecords/"
 languageCode = "en-us"
 title = "TFM Records"
 theme = "records"
@@ -8,6 +8,7 @@ theme = "records"
 
 [params]
 	BookToC = false
+	BookLogo = 'logo.png'
 	BookSection = '*'
 	BookDateFormat = 'January 2, 2006'
 	BookSearch = false
