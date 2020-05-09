@@ -12,14 +12,16 @@
     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
     {{ with $.Site.GetPage (printf "/categories/%s" $name) }}
     {{ $cat := index $.Site.Data.categories $name }}
-    {{ if $cat }}
     <li>
       <a href="{{ .Permalink }}">
-        <i class="menu-icon" style="background-image: url({{ $cat.icon }});"></i>
-        {{ $cat.title }}
+        {{ if $cat }}
+          <i class="menu-icon" style="background-image: url({{ $cat.icon }});"></i>
+          {{ $cat.title }}
+        {{ else }}
+          {{ .Title }}
+        {{ end }}
       </a>
     </li>
-    {{ end }}
     {{ end }}
     {{ end }}
   </ul>
