@@ -10,4 +10,4 @@ theme = "records"
 	BookToC = false
 	BookSection = '*'
 	BookDateFormat = 'January 2, 2006'
-	BookSearch = true
+	BookSearch = false
