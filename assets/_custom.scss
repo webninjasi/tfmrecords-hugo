@@ -48,3 +48,18 @@
     font-size: small;
     font-weight: bold;
 }
+
+.book-footer {
+    text-align: center;
+    line-height: 2;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
