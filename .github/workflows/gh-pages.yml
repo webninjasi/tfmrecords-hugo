@@ -17,7 +17,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.68.3'
+          hugo-version: '0.70.0'
           extended: true
 
       - name: Build
@@ -30,3 +30,4 @@ jobs:
           external_repository: webninjasi/tfmrecords
           publish_branch: master
           publish_dir: ./public
+          full_commit_message: ${{ github.event.head_commit.message }}
