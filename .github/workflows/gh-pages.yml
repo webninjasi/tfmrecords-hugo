@@ -39,4 +39,4 @@ jobs:
           external_repository: webninjasi/tfmrecords
           publish_branch: master
           publish_dir: ./public
-          full_commit_message: ${{ github.event.head_commit.message }}
+          full_commit_message: Update ${{ github.event.head_commit.id }}
