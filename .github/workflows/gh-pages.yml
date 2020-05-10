@@ -1,6 +1,8 @@
 name: github pages
 
 on:
+  repository_dispatch:
+    types: [bot_update]
   push:
     branches:
       - master
@@ -8,17 +10,28 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-18.04
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+    
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true  # Fetch Hugo themes
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.70.0'
           extended: true
+      - run: node update-pages.js
 
       - name: Build
         run: hugo --minify
