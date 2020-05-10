@@ -17,6 +17,7 @@
         {{ if $cat }}
           <i class="menu-icon" style="background-image: url({{ $cat.icon }});"></i>
           {{ $cat.title }}
+          <sup>{{ $taxonomy.Count }}</sup>
         {{ else }}
           {{ .Title }}
         {{ end }}
