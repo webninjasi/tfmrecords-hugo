@@ -6,18 +6,16 @@
 
 .maps-list {
     display: flex;
-}
-.maps-row {
-    display: flex;
     flex-flow: row wrap;
 }
 .small-map {
-    flex: 1 0 0;
+    flex: 0 0 0;
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
     margin: 5px;
 }
 .map-title {
     text-align: center;
+    margin: 0 !important;
 }
 .map-body {
     padding: 5px;
