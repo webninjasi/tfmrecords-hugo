@@ -6,7 +6,13 @@
         {{ $.Scratch.Set "completions" (merge $completions (dict .name (add 1 (or (index $completions .name) 0)))) }}
     {{ end }}
 {{ end }}
-{{ $completions := .Scratch.Get "completions" }}
+
+{{ $.Scratch.Set "toplist" slice }}
+{{ range $name, $num := .Scratch.Get "completions" }}
+    {{ $.Scratch.Add "toplist" (dict "name" $name "num" $num) }}
+{{ end }}
+
+{{ $toplist := .Scratch.Get "toplist" }}
 
 <table class="table">
     <thead>
@@ -17,12 +23,11 @@
         </tr>
     </thead>
     <tbody>
-        {{ $idx := 1 }}
-        {{ range $name, $num := $completions }}
+        {{ range $idx, $top := first 10 (sort $toplist "num") }}
         <tr>
-            <td>{{ $idx }}{{ $idx := add 1 $idx }}</td>
-            <td>{{ $name }}</td>
-            <td>{{ $num }}</td>
+            <td>{{ add 1 $idx }}</td>
+            <td>{{ $top.name }}</td>
+            <td>{{ $top.num }}</td>
         </tr>
         {{ end }}
     </tbody>
