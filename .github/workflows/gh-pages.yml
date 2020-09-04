@@ -3,9 +3,6 @@ name: github pages
 on:
   repository_dispatch:
     types: [bot_update]
-  push:
-    branches:
-      - master
 
 jobs:
   deploy:
