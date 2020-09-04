@@ -1,1 +1,50 @@
-{"category":"P3","img":"https://i.imgur.com/eZm7yeF.png","records":[{"name":"Mckeydown#0000","time":"10.8","link":"https://api.time.com/wp-content/uploads/2015/02/cats.jpg"},{"name":"Transforlays#0000","time":"12.8","link":"https://api.time.com/wp-content/uploads/2015/02/cats.jpg"},{"name":"Lays#1146","time":"2.8","link":"https://api.time.com/wp-content/uploads/2015/02/cats.jpg"},{"name":"Monteriple#0000","time":"7.8","link":"https://api.time.com/wp-content/uploads/2015/02/cats.jpg"},{"name":"Mckeydown#0000","time":"9.8","link":"https://api.time.com/wp-content/uploads/2015/02/cats.jpg"}],"recordsFlipped":[{"name":"Lays#1146","time":"2.8","link":"https://api.time.com/wp-content/uploads/2015/02/cats.jpg"},{"name":"Example#0000","time":22.2,"link":"https://google.com/","notes":""},{"name":"Example#0002","time":22.2,"link":"https://google.com/","notes":""}]}
+{
+	"category": "P3",
+	"img": "https://i.imgur.com/eZm7yeF.png",
+	"records": [
+		{
+			"name": "Lays#1146",
+			"time": 2.8,
+			"link": "https://api.time.com/wp-content/uploads/2015/02/cats.jpg"
+		},
+		{
+			"name": "Monteriple#0000",
+			"time": 7.8,
+			"link": "https://api.time.com/wp-content/uploads/2015/02/cats.jpg"
+		},
+		{
+			"name": "Mckeydown#0000",
+			"time": 9.8,
+			"link": "https://api.time.com/wp-content/uploads/2015/02/cats.jpg"
+		},
+		{
+			"name": "Mckeydown#0000",
+			"time": 10.8,
+			"link": "https://api.time.com/wp-content/uploads/2015/02/cats.jpg"
+		},
+		{
+			"name": "Transforlays#0000",
+			"time": 12.8,
+			"link": "https://api.time.com/wp-content/uploads/2015/02/cats.jpg"
+		}
+	],
+	"recordsFlipped": [
+		{
+			"name": "Lays#1146",
+			"time": 2.8,
+			"link": "https://api.time.com/wp-content/uploads/2015/02/cats.jpg"
+		},
+		{
+			"name": "Example#0000",
+			"time": 22.2,
+			"link": "https://google.com/",
+			"notes": ""
+		},
+		{
+			"name": "Example#0002",
+			"time": 22.2,
+			"link": "https://google.com/",
+			"notes": ""
+		}
+	]
+}
