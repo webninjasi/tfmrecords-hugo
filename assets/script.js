@@ -30,5 +30,10 @@ $(function() {
 
         $("#book-search-results").text("Redirecting to the page...");
         document.location = baseURL + "maps/" + mapid;
-      });
+    });
+
+    $('img').on("error", function () {
+        this.originalSrc = this.src;
+        this.src = 'https://images-docs-opensocial.googleusercontent.com/gadgets/proxy?url=' + encodeURIComponent(this.originalSrc) + '&container=docs&gadget=a&rewriteMime=image%2F*&refresh=86400';
+    });
 });
