@@ -10,8 +10,8 @@
       {{ range $idx, $rec := . }}
       <tr>
         <td scope="row">{{ add 1 $idx }}</td>
-        <td>{{ $rec.name }}</td>
-        <td>{{ $rec.time }}</td>
+        <td>{{ humanize $rec.name }}</td>
+        <td>{{ printf "%.2f" (div $rec.time 100) }}</td>
       </tr>
       {{ end }}
   </tbody>
