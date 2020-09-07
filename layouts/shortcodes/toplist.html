@@ -23,10 +23,10 @@
         </tr>
     </thead>
     <tbody>
-        {{ range $idx, $top := first 10 (sort $toplist "num") }}
+        {{ range $idx, $top := first 10 (sort $toplist "num" "desc") }}
         <tr>
             <td>{{ add 1 $idx }}</td>
-            <td>{{ $top.name }}</td>
+            <td>{{ humanize $top.name }}</td>
             <td>{{ $top.num }}</td>
         </tr>
         {{ end }}
