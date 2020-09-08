@@ -1,4 +1,4 @@
-baseURL = "https://webninjasi.github.io/tfmrecords/"
+baseURL = "http://tfmrecords.home.kg/"
 languageCode = "en-us"
 title = "TFM Records"
 theme = "records"
