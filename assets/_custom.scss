@@ -71,3 +71,8 @@ hr {
     width: 20px;
     margin-right: 10px;
 }
+
+li.page-item.active {
+    border: 1px solid #05b;
+    border-radius: 25px;
+}
