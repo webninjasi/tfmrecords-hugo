@@ -3,11 +3,13 @@
 {{ range .Site.Data.maps }}
     {{ range .records }}
         {{ $completions := $.Scratch.Get "completions" }}
-        {{ $.Scratch.Set "completions" (merge $completions (dict .name (add 1 (or (index $completions .name) 0)))) }}
+        {{ $nameLC := lower (trim .name " ") }}
+        {{ $.Scratch.Set "completions" (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
     {{ end }}
     {{ range .recordsFlipped }}
         {{ $completions := $.Scratch.Get "completions" }}
-        {{ $.Scratch.Set "completions" (merge $completions (dict .name (add 1 (or (index $completions .name) 0)))) }}
+        {{ $nameLC := lower (trim .name " ") }}
+        {{ $.Scratch.Set "completions" (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
     {{ end }}
 {{ end }}
 
@@ -18,7 +20,6 @@
 
 {{ $toplist := .Scratch.Get "toplist" }}
 
-<!--
 <table class="table">
     <thead>
         <tr>
@@ -28,13 +29,12 @@
         </tr>
     </thead>
     <tbody>
-        {{ range $idx, $top := first 10 (sort $toplist "num" "desc") }}
+        {{ range $idx, $top := (sort $toplist "num" "desc") }}
         <tr>
             <td>{{ add 1 $idx }}</td>
-            <td>{{ humanize $top.name }}</td>
+            <td>{{ replace (humanize $top.name) " " "_" }}</td>
             <td>{{ $top.num }}</td>
         </tr>
         {{ end }}
     </tbody>
 </table>
--->
