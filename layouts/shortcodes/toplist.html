@@ -29,7 +29,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ range $idx, $top := (sort $toplist "num" "desc") }}
+        {{ range $idx, $top := first 10 (sort $toplist "num" "desc") }}
         <tr>
             <td>{{ add 1 $idx }}</td>
             <td>{{ replace (humanize $top.name) " " "_" }}</td>
