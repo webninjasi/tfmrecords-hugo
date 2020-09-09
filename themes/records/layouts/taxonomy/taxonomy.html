@@ -1,5 +1,10 @@
 {{ define "main" }}
-  <h1>{{ .Title }} <sup>{{ len .Pages }}</sup></h1>
+  {{ $cat := index $.Site.Data.categories .Title }}
+  {{ if $cat }}
+    <h1>{{ $cat.title }} <sup>{{ len .Pages }}</sup></h1>
+  {{ else }}
+    <h1>{{ .Title }} <sup>{{ len .Pages }}</sup></h1>
+  {{ end }}
 
   <div class="maps-list">
     {{ range $i, $page := sort .Paginator.Pages }}
@@ -7,7 +12,7 @@
     {{ end }}
   </div>
 
-  {{ template "_internal/pagination.html" . }}
+  {{ partial "docs/pagination" . }}
 {{ end }}
 
 {{ define "toc" }}

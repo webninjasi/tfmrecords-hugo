@@ -50,4 +50,11 @@ $(function() {
         this.src = 'https://images-docs-opensocial.googleusercontent.com/gadgets/proxy?url=' + encodeURIComponent(this.originalSrc) + '&container=docs&gadget=a&rewriteMime=image%2F*&refresh=86400';
         window.localStorage.setItem('useProxy', true);
     });
+
+    $('#pagination-list').on('change', function (e) {
+        var pageNum = parseInt(this.value);
+        if (!isNaN(pageNum)) {
+            window.location = window.location.href.replace(/(categories\/[^\/]+)(\/?|\/(page\/.+))$/, '$1/page/' + pageNum);
+        }
+    });
 });

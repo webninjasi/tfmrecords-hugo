@@ -10,7 +10,12 @@
   {{ $title = path.Base .File.Dir | humanize | title }}
 {{ else if and .IsPage .File }}
   {{ if and .Params .Params.categories }}
-    {{ $title = printf "@%s" .File.BaseFileName }}
+    {{ $cat := index $.Site.Data.categories .File.BaseFileName }}
+    {{ if $cat }}
+      {{ $title = $cat.title }}
+    {{ else }}
+      {{ $title = printf "@%s" .File.BaseFileName }}
+    {{ end }}
   {{ else }}
     {{ $title = .File.BaseFileName | humanize | title }}
   {{ end }}
