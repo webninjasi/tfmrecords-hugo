@@ -5,6 +5,10 @@
         {{ $completions := $.Scratch.Get "completions" }}
         {{ $.Scratch.Set "completions" (merge $completions (dict .name (add 1 (or (index $completions .name) 0)))) }}
     {{ end }}
+    {{ range .recordsFlipped }}
+        {{ $completions := $.Scratch.Get "completions" }}
+        {{ $.Scratch.Set "completions" (merge $completions (dict .name (add 1 (or (index $completions .name) 0)))) }}
+    {{ end }}
 {{ end }}
 
 {{ $.Scratch.Set "toplist" slice }}
