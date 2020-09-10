@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-      {{ range $idx, $rec := . }}
+      {{ range $idx, $rec := first 5 . }}
       <tr>
         <td scope="row">{{ add 1 $idx }}</td>
         <td>{{ replace (humanize $rec.name) " " "_" }}</td>
