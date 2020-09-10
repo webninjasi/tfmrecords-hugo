@@ -1,12 +1,12 @@
 
 {{ $.Scratch.Set "completions" dict }}
 {{ range .Site.Data.maps }}
-    {{ range .records }}
+    {{ range first 5 .records }}
         {{ $completions := $.Scratch.Get "completions" }}
         {{ $nameLC := lower (trim .name " ") }}
         {{ $.Scratch.Set "completions" (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
     {{ end }}
-    {{ range .recordsFlipped }}
+    {{ range first 5 .recordsFlipped }}
         {{ $completions := $.Scratch.Get "completions" }}
         {{ $nameLC := lower (trim .name " ") }}
         {{ $.Scratch.Set "completions" (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
