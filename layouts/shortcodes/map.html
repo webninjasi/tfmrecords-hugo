@@ -1,7 +1,9 @@
 {{ with $map := index $.Site.Data.maps .Page.File.BaseFileName }}
 
     <h1>@{{ $.Page.File.BaseFileName }} <sup>{{ $map.category }}</sup></h1>
-    <img class="map-image" src="{{ $map.img }}">
+    <div class="map-image">
+        <img src="{{ $map.img }}">
+    </div>
 
     <div class="map-records">
         <div class="map-record">
@@ -9,7 +11,7 @@
             {{ partial "records" $map.records }}
         </div>
 
-        <div class="map-record">
+        <div class="map-record text-right">
             <h2>Reversed</h2>
             {{ partial "records" $map.recordsFlipped }}
         </div>

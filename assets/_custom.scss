@@ -1,7 +1,29 @@
-
+.map-image {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
 .map-image:hover {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+}
+.map-image:after {
+    width: 0;
+    height: 0;
+    top: 100%;
+    left: 0;
+    content: ' ';
+    position: absolute;
+    border: 16px solid;
+    border-color: #656E8D transparent transparent transparent;
+}
+
+.map-image img {
+    width: 100%;
+}
+
+.text-right {
+    text-align: right;
 }
 
 .maps-list {
