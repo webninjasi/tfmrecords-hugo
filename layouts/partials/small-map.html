@@ -1,4 +1,4 @@
-{{ if and (eq .Kind "page") .Params.categories }}
+{{ if and (and (eq .Kind "page") .Params.categories) (ne "0" .File.BaseFileName) }}
     {{ with $map := index $.Site.Data.maps .File.BaseFileName }}
     <div class="markdown book-post small-map">
         <a href="{{ $.RelPermalink }}">
