@@ -2,7 +2,7 @@
     {{ with $map := index $.Site.Data.maps .File.BaseFileName }}
     <div class="markdown book-post small-map">
         <a href="{{ $.RelPermalink }}">
-            <img class="map-image" src="{{ $map.img }}">
+            <img src="{{ $map.img }}">
         </a>
 
         <div class="map-body">

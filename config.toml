@@ -2,6 +2,7 @@ baseURL = "http://tfmrecords.home.kg/"
 languageCode = "en-us"
 title = "TFM Records"
 theme = "records"
+Paginate = 12
 
 [taxonomies]
 	category = "categories"
