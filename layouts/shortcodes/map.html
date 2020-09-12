@@ -1,6 +1,6 @@
 {{ with $map := index $.Site.Data.maps .Page.File.BaseFileName }}
 
-    {{ $cat := index $.Site.Data.categories $map.category }}
+    {{ $cat := index $.Site.Data.categories (lower $map.category) }}
     <h1>@{{ $.Page.File.BaseFileName }} <sup>{{ if $cat }}{{ $cat.title }}{{ else }}{{ $map.category }}{{ end }}</sup></h1>
     <div class="map-image">
         <img src="{{ $map.img }}">

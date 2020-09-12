@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ $cat := index $.Site.Data.categories .Title }}
+  {{ $cat := index $.Site.Data.categories (lower .Title) }}
   {{ if $cat }}
     <h1>{{ $cat.title }} <sup>{{ len .Pages }}</sup></h1>
   {{ else }}
