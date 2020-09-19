@@ -6,7 +6,7 @@
         {{ $nameLC := lower (trim .name " ") }}
         {{ $.Scratch.Set "completions" (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
     {{ end }}
-    {{ range first 5 .recordsFlipped }}
+    {{ range first 5 .recordsReversed }}
         {{ $completions := $.Scratch.Get "completions" }}
         {{ $nameLC := lower (trim .name " ") }}
         {{ $.Scratch.Set "completions" (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
