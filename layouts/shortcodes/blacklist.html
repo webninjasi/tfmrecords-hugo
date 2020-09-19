@@ -6,17 +6,17 @@
       <th scope="col">Reason</th>
       <th scope="col">By</th>
       <th scope="col">Date</th>
-      <th scope="col">End Date</th>
+      <th scope="col">Days</th>
     </tr>
   </thead>
   <tbody>
-    {{ range .Site.Data.blacklist }}
+    {{ range $name, $info := .Site.Data.banlist }}
       <tr>
-        <td>{{ .name }}</td>
-        <td>{{ .reason }}</td>
-        <td>{{ .by }}</td>
-        <td class="date-convert">{{ .date }}</td>
-        <td class="date-convert">{{ .endDate }}</td>
+        <td>{{ $name }}</td>
+        <td>{{ $info.reason }}</td>
+        <td>{{ $info.auth }}</td>
+        <td class="date-convert">{{ $info.start_date }}</td>
+        <td>{{ $info.days }}</td>
       </tr>
     {{ end }}
   </tbody>

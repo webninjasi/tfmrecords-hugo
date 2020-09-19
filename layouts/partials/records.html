@@ -7,9 +7,14 @@
     </tr>
   </thead>
   <tbody>
+      {{ $num := 0 }}
+      {{ $last_time := 0 }}
       {{ range $idx, $rec := first 5 (sort . "time" "asc") }}
+      {{ if ne $rec.time $last_time }}
+        {{ $num = add 1 $num }}
+      {{ end }}
       <tr>
-        <td scope="row">{{ add 1 $idx }}</td>
+        <td scope="row">{{ $num }}</td>
         <td>{{ replace (humanize $rec.name) " " "_" }}</td>
         <td>{{ printf "%.2f" (div $rec.time 100) }}</td>
       </tr>

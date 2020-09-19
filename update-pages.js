@@ -49,6 +49,11 @@ bookHidden: true\n\
             continue;
         }
 
+        // Skip removed maps
+        if (map.category == "removed") {
+            continue;
+        }
+
         // Create map page
         contentFilePath = path.join("content", "maps", mapId + ".md");
         fs.writeFileSync(contentFilePath, util.format(TEMPLATE_MAP, map.category));
