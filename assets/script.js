@@ -7,6 +7,11 @@ $(function() {
         "{{ .File.BaseFileName }}": 1,
         {{ end }}
     };
+    var players = {
+        {{ range $index, $page := where .Site.Pages "Type" "==" "players" }}
+        "{{ .File.BaseFileName }}": 1,
+        {{ end }}
+    };
 
     $('.date-convert').each(function() {
         $(this).text(moment($(this).text()).format('LL'));
@@ -16,20 +21,33 @@ $(function() {
         if (e.keyCode != 13) {
             return true;
         }
-        
-        var mapid = parseInt($(this).val().trim().replace('@', ''));
+
+        var search_text = $(this).val().trim();
+        var mapid = parseInt(search_text.replace('@', ''));
+
         if (isNaN(mapid)) {
-            $("#book-search-results").text("Map ID is invalid!");
+            search_text = search_text.toLowerCase();
+
+            if (search_text in players)
+            {
+                $("#book-search-results").text("Redirecting to player page...");
+                document.location = baseURL + "players/" + encodeURIComponent(search_text) + "/";
+            } else {
+                $("#book-search-results").text("Page not found!");
+            }
+
             return false;
         }
         
         if (!(mapid in maps)) {
-            $("#book-search-results").text("Map not found!");
+            $("#book-search-results").text("Page not found!");
             return false;
         }
 
-        $("#book-search-results").text("Redirecting to the page...");
+        $("#book-search-results").text("Redirecting to map page...");
         document.location = baseURL + "maps/" + mapid;
+
+        return false;
     });
 
     if (window.localStorage.getItem('useProxy'))

@@ -1,0 +1,28 @@
+{{ with $player := index $.Site.Data.players .Page.File.BaseFileName }}
+
+    <h1>{{ replace (humanize $.Page.File.BaseFileName) " " "_" }} <sup>{{ len $player.maps }}</sup></h1>
+
+    <h2>Firsts / Completions</h2>
+    <ul>
+    {{ range $catname, $count := $player.completions }}
+        {{ $cat := index $.Site.Data.categories $catname }}
+        <li>
+            <a href="/categories/{{ $catname }}" target="_blank">
+                {{ printf "%s - %d / %d" $cat.title (int (index $player.firsts $catname)) (int $count) }}
+            </a>
+        </li>
+    {{ end }}
+    </ul>
+
+    <h2>All Completed Maps</h2>
+    <ul>
+    {{ range $idx, $mapid := sort $player.maps }}
+        <li><a href="/maps/{{ int $mapid }}" target="_blank">@{{ int $mapid }}</a></li>
+    {{ end }}
+    </ul>
+
+{{ else }}
+
+    <a href="https://discord.gg/2WNNURP" target="_blank">Report this page on Discord</a>
+
+{{ end }}
