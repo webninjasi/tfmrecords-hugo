@@ -7,15 +7,19 @@
     </div>
 
     <div class="map-records">
-        <div class="map-record">
+        <div class="map-record{{ if ne $map.category "parkour" }} map-image-rev{{ end }}">
             <h2>Records</h2>
             {{ partial "records" $map.records }}
         </div>
+
+        {{ if ne $map.category "parkour" }}
 
         <div class="map-record text-right">
             <h2>Reversed</h2>
             {{ partial "records" $map.recordsReversed }}
         </div>
+
+        {{ end }}
     </div>
 
 {{ else }}

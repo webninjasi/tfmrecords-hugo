@@ -3,11 +3,11 @@
     display: inline-block;
     width: 100%;
 }
-.map-image:hover {
+.map-image-rev:hover {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
-.map-image:after {
+.map-image-rev:after {
     width: 0;
     height: 0;
     top: 100%;
