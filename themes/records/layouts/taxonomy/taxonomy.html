@@ -7,7 +7,7 @@
   {{ end }}
 
   {{ if and $cat $cat.note }}
-  <p class="map-notes">{{$cat.note}}</p>
+  <p class="map-notes">{{ $cat.note | safeHTML }}</p>
   {{ end }}
 
   <div class="maps-list">

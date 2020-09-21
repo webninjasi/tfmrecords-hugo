@@ -5,17 +5,17 @@
 {{ $title := "" }}
 
 {{ if .Title }}
-  {{ $title = .Title }}
+  {{ $cat := index $.Site.Data.categories (lower .Title) }}
+  {{ if $cat }}
+    {{ $title = $cat.title }}
+  {{ else }}
+    {{ $title = .Title }}
+  {{ end }}
 {{ else if and .IsSection .File }}
   {{ $title = path.Base .File.Dir | humanize | title }}
 {{ else if and .IsPage .File }}
   {{ if and .Params .Params.categories }}
-    {{ $cat := index $.Site.Data.categories .File.BaseFileName }}
-    {{ if $cat }}
-      {{ $title = $cat.title }}
-    {{ else }}
-      {{ $title = printf "@%s" .File.BaseFileName }}
-    {{ end }}
+    {{ $title = printf "@%s" .File.BaseFileName }}
   {{ else }}
     {{ $title = .File.BaseFileName | humanize | title }}
   {{ end }}
