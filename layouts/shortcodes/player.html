@@ -7,7 +7,7 @@
     {{ range $catname, $count := $player.completions }}
         {{ $cat := index $.Site.Data.categories $catname }}
         <li>
-            <a href="/categories/{{ $catname }}" target="_blank">
+            <a href="/categories/{{ $catname }}">
                 {{ printf "%s - %d / %d" $cat.title (int (index $player.firsts $catname)) (int $count) }}
             </a>
         </li>
@@ -15,11 +15,11 @@
     </ul>
 
     <h2>All Completed Maps</h2>
-    <ul>
+    <ol>
     {{ range $idx, $mapid := sort $player.maps }}
-        <li><a href="/maps/{{ int $mapid }}" target="_blank">@{{ int $mapid }}</a></li>
+        <li><a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a></li>
     {{ end }}
-    </ul>
+    </ol>
 
 {{ else }}
 

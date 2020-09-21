@@ -32,7 +32,7 @@
         {{ range $idx, $top := first 10 (sort $toplist "num" "desc") }}
         <tr>
             <td>{{ add 1 $idx }}</td>
-            <td>{{ replace (humanize $top.name) " " "_" }}</td>
+            <td><a href="/players/{{ (replace $top.name "#" "%23") }}/">{{ replace (humanize $top.name) " " "_" }}</a></td>
             <td>{{ $top.num }}</td>
         </tr>
         {{ end }}
