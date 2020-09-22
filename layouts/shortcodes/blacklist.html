@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    {{ range $name, $info := (sort $banlist "start_date" "asc") }}
+    {{ range $name, $info := (sort $banlist "start_date" "desc") }}
       {{ $end_date := add (int $info.start_date) (mul 86400 (int $info.days)) }}
       {{ if lt now.Unix $end_date }}
       <tr>
