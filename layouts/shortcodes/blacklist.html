@@ -1,4 +1,8 @@
 
+{{ $banlist := dict }}
+{{ range $name, $info := .Site.Data.banlist }}
+  {{ $banlist = merge $banlist (dict $name (merge $info (dict "name" $name))) }}
+{{ end }}
 <table class="table">
   <thead>
     <tr>
@@ -11,15 +15,18 @@
     </tr>
   </thead>
   <tbody>
-    {{ range $name, $info := (sort .Site.Data.banlist "start_date" "asc") }}
+    {{ range $name, $info := (sort $banlist "start_date" "asc") }}
+      {{ $end_date := add (int $info.start_date) (mul 86400 (int $info.days)) }}
+      {{ if lt now.Unix $end_date }}
       <tr>
-        <td>{{ $name }}</td>
+        <td>{{ replace (humanize $info.name) " " "_" }}</td>
         <td>{{ $info.reason }}</td>
         <td>{{ $info.auth }}</td>
         <td class="date-convert">{{ $info.start_date }}</td>
-        <td class="date-convert">{{ add (int $info.start_date) (int $info.days) }}</td>
+        <td class="date-convert">{{ $end_date }}</td>
         <td>{{ $info.days }}</td>
       </tr>
+      {{ end }}
     {{ end }}
   </tbody>
 </table>
