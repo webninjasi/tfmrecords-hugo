@@ -6,16 +6,18 @@
       <th scope="col">Reason</th>
       <th scope="col">By</th>
       <th scope="col">Date</th>
+      <th scope="col">End Date</th>
       <th scope="col">Days</th>
     </tr>
   </thead>
   <tbody>
-    {{ range $name, $info := .Site.Data.banlist }}
+    {{ range $name, $info := (sort .Site.Data.banlist "start_date" "asc") }}
       <tr>
         <td>{{ $name }}</td>
         <td>{{ $info.reason }}</td>
         <td>{{ $info.auth }}</td>
         <td class="date-convert">{{ $info.start_date }}</td>
+        <td class="date-convert">{{ add (int $info.start_date) (int $info.days) }}</td>
         <td>{{ $info.days }}</td>
       </tr>
     {{ end }}

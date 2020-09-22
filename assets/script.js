@@ -14,7 +14,7 @@ $(function() {
     };
 
     $('.date-convert').each(function() {
-        $(this).text(moment($(this).text()).format('LL'));
+        $(this).text(moment.unix($(this).text()).format('LL'));
     });
 
     $("#book-search-input").keypress(function(e) {
