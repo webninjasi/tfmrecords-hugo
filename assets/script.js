@@ -33,7 +33,15 @@ $(function() {
                 $("#book-search-results").text("Redirecting to player page...");
                 document.location = baseURL + "players/" + encodeURIComponent(search_text) + "/";
             } else {
-                $("#book-search-results").text("Page not found!");
+                search_text += "#0000";
+
+                if (search_text in players)
+                {
+                    $("#book-search-results").text("Redirecting to player page...");
+                    document.location = baseURL + "players/" + encodeURIComponent(search_text) + "/";
+                } else {
+                    $("#book-search-results").text("Page not found!");
+                }
             }
 
             return false;
