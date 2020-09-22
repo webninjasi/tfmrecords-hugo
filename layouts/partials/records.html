@@ -15,7 +15,7 @@
       {{ end }}
       <tr>
         <td scope="row">{{ $num }}</td>
-        <td>{{ replace (humanize $rec.name) " " "_" }}</td>
+        <td><a href="/players/{{ (replace $rec.name "#" "%23") }}/">{{ replace (humanize $rec.name) " " "_" }}</a></td>
         <td>{{ printf "%.2f" (div $rec.time 100) }}</td>
       </tr>
       {{ end }}
