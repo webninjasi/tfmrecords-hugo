@@ -1,3 +1,4 @@
+/* Map Page */
 .map-image {
     position: relative;
     display: inline-block;
@@ -20,10 +21,6 @@
 
 .map-image img {
     width: 100%;
-}
-
-.text-right {
-    text-align: right;
 }
 
 .maps-list {
@@ -51,6 +48,15 @@
     flex: 1 0 0;
 }
 
+/* Player Profile */
+.profile-sections {
+    display: flex;
+}
+.profile-section {
+    flex: 1 0 0;
+}
+
+/* Tables */
 .table {
     margin: 0 auto;
     display: inline !important;
@@ -63,15 +69,22 @@
     border: 0 !important;
 }
 
+/* Search */
 #book-search-results {
     padding: 5px;
     font-size: small;
     font-weight: bold;
 }
 
+/* Page Items */
 .book-footer {
     text-align: center;
     line-height: 2;
+}
+
+/* General */
+.text-right {
+    text-align: right;
 }
 
 hr {
@@ -84,6 +97,7 @@ hr {
     overflow: visible;
 }
 
+/* Menu */
 .menu-icon {
     background-repeat: no-repeat;
     background-size: 20px;
@@ -93,7 +107,6 @@ hr {
     width: 20px;
     margin-right: 10px;
 }
-
 li.page-item.active {
     border: 1px solid #05b;
     border-radius: 25px;

@@ -2,25 +2,45 @@
 
     <h1>{{ replace (humanize $.Page.File.BaseFileName) " " "_" }} <sup>{{ len $player.maps }}</sup></h1>
 
-    <h2>Firsts / Completions</h2>
-    <ul>
-    {{ range $catname, $count := $player.completions }}
-        {{ $cat := index $.Site.Data.categories $catname }}
-        <li>
-            <a href="/categories/{{ $catname }}">
-                {{ printf "%s - %d / %d" $cat.title (int (index $player.firsts $catname)) (int $count) }}
-            </a>
-        </li>
-    {{ end }}
-    </ul>
+    <div class="profile-sections">
+        <div class="profile-section">
+            <h2>Completed Maps</h2>
+            <ol>
+            {{ range $idx, $mapid := sort $player.maps }}
+                <li><a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a></li>
+            {{ end }}
+            </ol>
+        </div>
 
-    <h2>All Completed Maps</h2>
-    <ol>
-    {{ range $idx, $mapid := sort $player.maps }}
-        <li><a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a></li>
-    {{ end }}
-    </ol>
+        <div class="profile-section">
+            <h2>Firsts / Completions</h2>
 
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Category</th>
+                        <th scope="col">Firsts</th>
+                        <th scope="col">Completions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range $catname, $count := $player.completions }}
+                    {{ $cat := index $.Site.Data.categories $catname }}
+                    <tr>
+                        <td scope="row">
+                            <a href="/categories/{{ $catname }}/">
+                                <i class="menu-icon" style="background-image: url({{ $cat.icon }});"></i>
+                                {{ $cat.title }}
+                            </a>
+                        </td>
+                        <td>{{ int (index $player.firsts $catname) }}</a></td>
+                        <td>{{ int $count }}</td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {{ else }}
 
     <a href="https://discord.gg/2WNNURP" target="_blank">Report this page on Discord</a>
