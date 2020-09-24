@@ -11,4 +11,4 @@ title: "Home"
 
 Now the website is faster and easier to use. Also we have got a discord server now.
 
-{{< button href="https://discord.gg/HbbRDqm" >}}Join Discord Server{{< /button >}}
+{{< button href="https://discord.gg/w23Gz9f" >}}Join Discord Server{{< /button >}}
