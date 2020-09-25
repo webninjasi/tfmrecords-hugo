@@ -1,7 +1,10 @@
 {{ define "main" }}
   {{ $cat := index $.Site.Data.categories (lower .Title) }}
   {{ if $cat }}
-    <h1>{{ $cat.title }} <sup>{{ len .Pages }}</sup></h1>
+    <h1>
+      <img class="category-icon" src="{{ $cat.icon }}" />
+      {{ $cat.title }} <sup>{{ len .Pages }}</sup>
+    </h1>
   {{ else }}
     <h1>{{ .Title }} <sup>{{ len .Pages }}</sup></h1>
   {{ end }}

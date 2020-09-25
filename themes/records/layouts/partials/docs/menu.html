@@ -13,7 +13,7 @@
     {{ with $.Site.GetPage (printf "/categories/%s" $name) }}
     {{ $cat := index $.Site.Data.categories $name }}
     <li>
-      <a href="{{ .Permalink }}">
+      <a href="{{ .RelPermalink }}">
         {{ if $cat }}
       <i class="menu-icon" style="background-image: url({{ $cat.icon }});{{ if $cat.iconHeight }}height:{{ $cat.iconHeight }};{{ end }}{{ if $cat.iconWidth }}width:{{ $cat.iconWidth }};{{ end }}"></i>
           {{ $cat.title }}

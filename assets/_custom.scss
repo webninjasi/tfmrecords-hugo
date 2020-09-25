@@ -1,4 +1,9 @@
 /* Map Page */
+.category-icon {
+    vertical-align: middle;
+    height: 50px;
+}
+
 .map-image {
     position: relative;
     display: inline-block;
@@ -24,11 +29,15 @@
 }
 
 .maps-list {
-    display: flex;
-    flex-flow: row wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+@media(max-width: 540px){
+    .maps-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 .small-map {
-    flex: 1 0 30%;
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
     margin: 5px;
 }

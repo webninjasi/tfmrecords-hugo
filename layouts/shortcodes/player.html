@@ -29,7 +29,7 @@
                     <tr>
                         <td scope="row">
                             <a href="/categories/{{ $catname }}/">
-                                <i class="menu-icon" style="background-image: url({{ $cat.icon }});"></i>
+                                <i class="menu-icon" style="background-image: url({{ $cat.icon }});{{ if $cat.iconHeight }}height:{{ $cat.iconHeight }};{{ end }}{{ if $cat.iconWidth }}width:{{ $cat.iconWidth }};{{ end }}"></i>
                                 {{ $cat.title }}
                             </a>
                         </td>
