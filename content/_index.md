@@ -12,3 +12,10 @@ title: "Home"
 Now the website is faster and easier to use. Also we have got a discord server now.
 
 {{< button href="https://discord.gg/w23Gz9f" >}}Join Discord Server{{< /button >}}
+
+## Parkour
+
+You can now submit your records in a records enabled #parkour room (e.g. "/room \*#parkour0records YourName#0000")
+Use in-game !submit command to send your records to us.
+
+{{< button href="https://tfmrecords.home.kg/categories/parkour/" >}}View Parkour Maps{{< /button >}}
