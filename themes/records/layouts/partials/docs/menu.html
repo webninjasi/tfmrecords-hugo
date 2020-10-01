@@ -84,7 +84,7 @@
     {{ end }}
 
     {{ if len $Children }}
-      <i class="menu-toggle arrow right"></i>
+      <i class="menu-toggle arrow right" id="menu_toggle_{{ $catname }}"></i>
       <ul class="menu-children">
         {{ range $name, $taxonomy := $Children }}
           {{ template "menu-category-item" (dict "Taxonomy" $taxonomy "Name" $name "Children" dict "Site" $Site) }}
