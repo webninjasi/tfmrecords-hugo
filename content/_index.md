@@ -15,7 +15,7 @@ Now the website is faster and easier to use. Also we have got a discord server n
 
 ## Parkour
 
-You can now submit your records in a records enabled #parkour room (e.g. "**/room \*#parkour0records YourName#0000**")
+You can now submit your parkour records in a records enabled #parkour room (e.g. "**/room \*#parkour0records YourName#0000**")
 
 Use in-game **!submit** command to send your records to us.
 
