@@ -25,10 +25,11 @@
                 </thead>
                 <tbody>
                     {{ range $catname, $count := $player.completions }}
+                    {{ $caturl := (replace $catname "-" "/") }}
                     {{ $cat := index $.Site.Data.categories $catname }}
                     <tr>
                         <td scope="row">
-                            <a href="/categories/{{ $catname }}/">
+                            <a href="/categories/{{ $caturl }}/">
                                 <i class="menu-icon" style="background-image: url({{ $cat.icon }});{{ if $cat.iconHeight }}height:{{ $cat.iconHeight }};{{ end }}{{ if $cat.iconWidth }}width:{{ $cat.iconWidth }};{{ end }}"></i>
                                 {{ $cat.title }}
                             </a>

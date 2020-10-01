@@ -75,6 +75,9 @@ bookHidden: true\n\
             continue;
         }
 
+        // Subcategories
+        map.category = map.category.replace(/-/g, '/')
+
         // Create map page
         contentFilePath = path.join("content", "maps", mapId + ".md");
         fs.writeFileSync(contentFilePath, util.format(TEMPLATE_MAP, map.category));

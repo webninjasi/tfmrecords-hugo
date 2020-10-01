@@ -5,7 +5,8 @@
 {{ $title := "" }}
 
 {{ if .Title }}
-  {{ $cat := index $.Site.Data.categories (lower .Title) }}
+  {{ $name := (replace (lower .Title) "/" "-") }}
+  {{ $cat := index $.Site.Data.categories $name }}
   {{ if $cat }}
     {{ $title = $cat.title }}
   {{ else }}

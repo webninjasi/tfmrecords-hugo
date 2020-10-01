@@ -11,7 +11,8 @@
   <ul>
     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
     {{ with $.Site.GetPage (printf "/categories/%s" $name) }}
-    {{ $cat := index $.Site.Data.categories $name }}
+    {{ $catname := (replace (lower $name) "/" "-") }}
+    {{ $cat := index $.Site.Data.categories $catname }}
     <li>
       <a href="{{ .RelPermalink }}">
         {{ if $cat }}
