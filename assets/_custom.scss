@@ -120,3 +120,37 @@ li.page-item.active {
     border: 1px solid #05b;
     border-radius: 25px;
 }
+.menu-children {
+    display: none;
+}
+.menu-toggle {
+    margin-left: 5px;
+    cursor: pointer;
+}
+aside nav ul a {
+    display: inline !important;
+}
+
+/* Arrows */
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}

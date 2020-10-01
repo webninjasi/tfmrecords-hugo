@@ -5,26 +5,44 @@
 {{ partial "docs/inject/menu-before" . }}
 {{ partial "docs/menu-hugo" .Site.Menus.before }}
 
+{{ $toplevel := dict }}
+
+{{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+  {{ $catname := (replace (lower $name) "/" "-") }}
+  {{ $cat := index $.Site.Data.categories $catname }}
+
+  {{ if not $cat.parent }}
+    {{ $props := dict "taxonomy" $taxonomy "children" dict }}
+    {{ $toplevel = merge $toplevel (dict $name $props) }}
+  {{ end }}
+{{ end }}
+
+{{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+  {{ $catname := (replace (lower $name) "/" "-") }}
+  {{ $cat := index $.Site.Data.categories $catname }}
+
+  {{ if $cat.parent }}
+    {{ $parent := index $toplevel $cat.parent }}
+
+    {{ if $parent }}
+      {{ $children := $parent.children }}
+      {{ $children = merge $children (dict $name $taxonomy) }}
+      {{ $parent = merge $parent (dict "children" $children) }}
+      {{ $toplevel = merge $toplevel (dict $cat.parent $parent) }}
+    {{ else }}
+      {{ $children := dict $name $taxonomy }}
+      {{ $parent := dict "children" $children }}
+      {{ $toplevel = merge $toplevel (dict $cat.parent $parent) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
 {{ with .Site.GetPage "/" }}
   {{ template "book-section-children" (dict "Section" . "CurrentPage" $) }}
   <br>
   <ul>
-    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-    {{ with $.Site.GetPage (printf "/categories/%s" $name) }}
-    {{ $catname := (replace (lower $name) "/" "-") }}
-    {{ $cat := index $.Site.Data.categories $catname }}
-    <li>
-      <a href="{{ .RelPermalink }}">
-        {{ if $cat }}
-      <i class="menu-icon" style="background-image: url({{ $cat.icon }});{{ if $cat.iconHeight }}height:{{ $cat.iconHeight }};{{ end }}{{ if $cat.iconWidth }}width:{{ $cat.iconWidth }};{{ end }}"></i>
-          {{ $cat.title }}
-          <sup>{{ $taxonomy.Count }}</sup>
-        {{ else }}
-          {{ .Title }}
-        {{ end }}
-      </a>
-    </li>
-    {{ end }}
+    {{ range $name, $info := $toplevel }}
+      {{ template "menu-category-item" (dict "Taxonomy" $info.taxonomy "Name" $name "Children" $info.children "Site" $.Site) }}
     {{ end }}
   </ul>
 {{ end }}
@@ -39,6 +57,42 @@
   <script>{{ . | safeJS }}</script>
 {{ end }}
 
+{{ define "menu-category-item" }}
+  {{ $Site := .Site }}
+  {{ $Taxonomy := .Taxonomy }}
+  {{ $Children := .Children }}
+  {{ $catname := (replace (lower .Name) "/" "-") }}
+  {{ $cat := index $Site.Data.categories $catname }}
+  <li>
+    {{ $page := $.Site.GetPage (printf "/categories/%s" .Name) }}
+    {{ if $page }}
+      <a href="{{ $page.RelPermalink }}">
+    {{ end }}
+
+    {{ if $cat }}
+      <i class="menu-icon" style="background-image: url({{ $cat.icon }});{{ if $cat.iconHeight }}height:{{ $cat.iconHeight }};{{ end }}{{ if $cat.iconWidth }}width:{{ $cat.iconWidth }};{{ end }}"></i>
+      {{ $cat.title }}
+      {{ if $Taxonomy }}
+        <sup>{{ $Taxonomy.Count }}</sup>
+      {{ end }}
+    {{ else }}
+      {{ .Name }}
+    {{ end }}
+
+    {{ if $page }}
+      </a>
+    {{ end }}
+
+    {{ if len $Children }}
+      <i class="menu-toggle arrow right"></i>
+      <ul class="menu-children">
+        {{ range $name, $taxonomy := $Children }}
+          {{ template "menu-category-item" (dict "Taxonomy" $taxonomy "Name" $name "Children" dict "Site" $Site) }}
+        {{ end }}
+      </ul>
+    {{ end }}
+  </li>
+{{ end }}
 {{ define "book-section-children" }}
   {{ $self := eq .CurrentPage .Section }}
   {{ $ancestor := .Section.IsAncestor .CurrentPage }}

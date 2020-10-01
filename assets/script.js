@@ -83,4 +83,16 @@ $(function() {
             window.location = window.location.href.replace(/(categories\/[^\/]+)(\/?|\/(page\/.+))$/, '$1/page/' + pageNum);
         }
     });
+
+    $('.menu-toggle').click(function() {
+        var $elm = $(this);
+        $elm.next('.menu-children').toggle();
+        if ($elm.hasClass('right')) {
+            $elm.removeClass('right');
+            $elm.addClass('down');
+        } else {
+            $elm.removeClass('down');
+            $elm.addClass('right');
+        }
+    });
 });
