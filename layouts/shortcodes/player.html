@@ -2,46 +2,47 @@
 
     <h1>{{ replace (humanize $.Page.File.BaseFileName) " " "_" }} <sup>{{ len $player.maps }}</sup></h1>
 
-    <div class="profile-sections">
-        <div class="profile-section">
-            <h2>Completed Maps</h2>
-            <ol>
-            {{ range $idx, $mapid := sort $player.maps }}
-                <li><a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a></li>
-            {{ end }}
-            </ol>
-        </div>
+    <h2>Firsts / Completions</h2>
 
-        <div class="profile-section">
-            <h2>Firsts / Completions</h2>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Category</th>
-                        <th scope="col">Firsts</th>
-                        <th scope="col">Completions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{ range $catname, $count := $player.completions }}
-                    {{ $caturl := (replace $catname "-" "/") }}
-                    {{ $cat := index $.Site.Data.categories $catname }}
-                    <tr>
-                        <td scope="row">
-                            <a href="/categories/{{ $caturl }}/">
-                                <i class="menu-icon" style="background-image: url({{ $cat.icon }});{{ if $cat.iconHeight }}height:{{ $cat.iconHeight }};{{ end }}{{ if $cat.iconWidth }}width:{{ $cat.iconWidth }};{{ end }}"></i>
-                                {{ $cat.title }}
-                            </a>
-                        </td>
-                        <td>{{ int (index $player.firsts $catname) }}</a></td>
-                        <td>{{ int $count }}</td>
-                    </tr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Firsts</th>
+                <th scope="col">Completions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range $catname, $count := $player.completions }}
+            {{ $caturl := (replace $catname "-" "/") }}
+            {{ $cat := index $.Site.Data.categories $catname }}
+            <tr>
+                <td scope="row">
+                    <a href="/categories/{{ $caturl }}/">
+                        <i class="menu-icon" style="background-image: url({{ $cat.icon }});{{ if $cat.iconHeight }}height:{{ $cat.iconHeight }};{{ end }}{{ if $cat.iconWidth }}width:{{ $cat.iconWidth }};{{ end }}"></i>
+                        {{ $cat.title }}
+                    </a>
+                </td>
+                <td>{{ int (index $player.firsts $catname) }}</a></td>
+                <td>{{ int $count }}</td>
+                <td><i class="completions-toggle arrow right"></i></td>
+            </tr>
+            <tr class="player-completions">
+                <td scope="row"></td>
+                <td></td>
+                <td colspan="2">
+                    {{ range $idx, $mapid := sort $player.maps }}
+                        {{ with $map := index $.Site.Data.maps (string $mapid) }}
+                            {{ if eq (lower $map.category) $catname }}
+                                <a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a><br />
+                            {{ end }}
+                        {{ end }}
                     {{ end }}
-                </tbody>
-            </table>
-        </div>
-    </div>
+                </td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
 {{ else }}
 
     <a href="https://discord.gg/2WNNURP" target="_blank">Report this page on Discord</a>

@@ -117,6 +117,19 @@ $(function() {
         }
     });
 
+    $('.completions-toggle').click(function() {
+        var $elm = $(this);
+        $elm.closest('tr').next('.player-completions').toggle();
+
+        if ($elm.hasClass('right')) {
+            $elm.removeClass('right');
+            $elm.addClass('down');
+        } else {
+            $elm.removeClass('down');
+            $elm.addClass('right');
+        }
+    });
+
     if (window.localStorage) {
         if (window.localStorage.getItem('useProxy')) {
             $('img').each(function () {

@@ -58,11 +58,12 @@
 }
 
 /* Player Profile */
-.profile-sections {
-    display: flex;
+.player-completions {
+    display: none;
 }
-.profile-section {
-    flex: 1 0 0;
+
+.completions-toggle {
+    cursor: pointer;
 }
 
 /* Tables */
