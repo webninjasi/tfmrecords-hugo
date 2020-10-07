@@ -17,8 +17,10 @@
 
 {{ range .Site.Data.maps }}
     {{ range first 1 .records }}
-        {{ $nameLC := lower (trim .name " ") }}
-        {{ $firsts = (merge $firsts (dict $nameLC (add 1 (or (index $firsts $nameLC) 0)))) }}
+        {{ if or (ne .category "parkour") (ge (len .records) 3) }}
+            {{ $nameLC := lower (trim .name " ") }}
+            {{ $firsts = (merge $firsts (dict $nameLC (add 1 (or (index $firsts $nameLC) 0)))) }}
+        {{ end }}
     {{ end }}
     {{ range first 1 .recordsReversed }}
         {{ $nameLC := lower (trim .name " ") }}
