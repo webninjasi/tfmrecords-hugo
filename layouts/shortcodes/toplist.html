@@ -1,40 +1,75 @@
 
-{{ $.Scratch.Set "completions" dict }}
+{{ $completions := dict }}
+{{ $firsts := dict }}
+{{ $toplist := slice }}
+{{ $topfirst := slice }}
+
 {{ range .Site.Data.maps }}
     {{ range first 5 .records }}
-        {{ $completions := $.Scratch.Get "completions" }}
         {{ $nameLC := lower (trim .name " ") }}
-        {{ $.Scratch.Set "completions" (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
+        {{ $completions = (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
     {{ end }}
     {{ range first 5 .recordsReversed }}
-        {{ $completions := $.Scratch.Get "completions" }}
         {{ $nameLC := lower (trim .name " ") }}
-        {{ $.Scratch.Set "completions" (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
+        {{ $completions = (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
     {{ end }}
 {{ end }}
 
-{{ $.Scratch.Set "toplist" slice }}
-{{ range $name, $num := .Scratch.Get "completions" }}
-    {{ $.Scratch.Add "toplist" (dict "name" $name "num" $num) }}
+{{ range .Site.Data.maps }}
+    {{ range first 1 .records }}
+        {{ $nameLC := lower (trim .name " ") }}
+        {{ $firsts = (merge $firsts (dict $nameLC (add 1 (or (index $firsts $nameLC) 0)))) }}
+    {{ end }}
+    {{ range first 1 .recordsReversed }}
+        {{ $nameLC := lower (trim .name " ") }}
+        {{ $firsts = (merge $firsts (dict $nameLC (add 1 (or (index $firsts $nameLC) 0)))) }}
+    {{ end }}
 {{ end }}
 
-{{ $toplist := .Scratch.Get "toplist" }}
+{{ range $name, $num := $completions }}
+    {{ $toplist = $toplist | append (dict "name" $name "num" $num) }}
+{{ end }}
 
-<table class="table">
-    <thead>
-        <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Maps Completed</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{ range $idx, $top := first 10 (sort $toplist "num" "desc") }}
-        <tr>
-            <td>{{ add 1 $idx }}</td>
-            <td><a href="/players/{{ (replace $top.name "#" "%23") }}/">{{ replace (humanize $top.name) " " "_" }}</a></td>
-            <td>{{ $top.num }}</td>
-        </tr>
-        {{ end }}
-    </tbody>
-</table>
+{{ range $name, $num := $firsts }}
+    {{ $topfirst = $topfirst | append (dict "name" $name "num" $num) }}
+{{ end }}
+
+<div class="section-container">
+    <table class="table section">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Maps</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range $idx, $top := first 10 (sort $toplist "num" "desc") }}
+            <tr>
+                <td>{{ add 1 $idx }}</td>
+                <td><a href="/players/{{ (replace $top.name "#" "%23") }}/">{{ replace (humanize $top.name) " " "_" }}</a></td>
+                <td>{{ $top.num }}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+
+    <table class="table section">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Firsts</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range $idx, $top := first 10 (sort $topfirst "num" "desc") }}
+            <tr>
+                <td>{{ add 1 $idx }}</td>
+                <td><a href="/players/{{ (replace $top.name "#" "%23") }}/">{{ replace (humanize $top.name) " " "_" }}</a></td>
+                <td>{{ $top.num }}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+</div>
