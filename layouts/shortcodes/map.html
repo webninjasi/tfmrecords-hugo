@@ -1,5 +1,13 @@
 {{ with $map := index $.Site.Data.maps .Page.File.BaseFileName }}
 
+    {{ $field1 := "Records" }}
+    {{ $field2 := "Reversed" }}
+
+    {{ if eq $map.category "parkour" }}
+        {{ $field1 = "Old Checkpoint" }}
+        {{ $field2 = "New Checkpoint" }}
+    {{ end }}
+
     {{ $cat := index $.Site.Data.categories (lower $map.category) }}
     <h1>@{{ $.Page.File.BaseFileName }} <sup>{{ if $cat }}{{ $cat.title }}{{ else }}{{ $map.category }}{{ end }}</sup></h1>
     <div class="map-image{{ if ne $map.category "parkour" }} map-image-rev{{ end }}">
@@ -8,18 +16,14 @@
 
     <div class="map-records">
         <div class="map-record">
-            <h2>Records</h2>
+            <h2>{{ $field1 }}</h2>
             {{ partial "records" $map.records }}
         </div>
 
-        {{ if ne $map.category "parkour" }}
-
         <div class="map-record text-right">
-            <h2>Reversed</h2>
+            <h2>{{ $field2 }}</h2>
             {{ partial "records" $map.recordsReversed }}
         </div>
-
-        {{ end }}
     </div>
 
 {{ else }}
