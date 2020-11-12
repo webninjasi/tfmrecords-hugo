@@ -59,7 +59,7 @@ $(function() {
     });
 
     $('img').on("error", function () {
-        if (this.originalSrc) {
+        if (this.originalSrc || this.src.indexOf('imgur') == -1) {
             return;
         }
 
