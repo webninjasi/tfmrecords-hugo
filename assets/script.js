@@ -59,7 +59,7 @@ $(function() {
     });
 
     $('img').on("error", function () {
-        if (this.originalSrc || this.src.indexOf('imgur') == -1) {
+        if (this.originalSrc) {
             return;
         }
 
@@ -137,10 +137,12 @@ $(function() {
     if (window.localStorage) {
         if (window.localStorage.getItem('useProxy')) {
             $('img').each(function () {
+                /*
                 if (this.src.indexOf('imgur') == -1)
                 {
                     return;
                 }
+                */
 
                 this.originalSrc = this.src;
                 this.src = 'https://images-docs-opensocial.googleusercontent.com/gadgets/proxy?url=' + encodeURIComponent(this.originalSrc) + '&container=docs&gadget=a&rewriteMime=image%2F*&refresh=86400';
