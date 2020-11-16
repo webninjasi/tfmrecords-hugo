@@ -7,6 +7,7 @@ const util = require('util');
 
 const TEMPLATE_MAP = "---\n\
 categories: %s\n\
+mapid: %d\n\
 ---\n\
 {{< map >}}";
 const TEMPLATE_PLAYER = "---\n\
@@ -80,7 +81,7 @@ bookHidden: true\n\
 
         // Create map page
         contentFilePath = path.join("content", "maps", mapId + ".md");
-        fs.writeFileSync(contentFilePath, util.format(TEMPLATE_MAP, map.category));
+        fs.writeFileSync(contentFilePath, util.format(TEMPLATE_MAP, map.category, mapId));
         console.log(util.format("@%s is updated", mapId));
     }
 

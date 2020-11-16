@@ -15,8 +15,8 @@
   {{ end }}
 
   <div class="maps-list">
-    {{ range $i, $page := sort .Paginator.Pages }}
-        {{ partial "small-map" $page }}
+    {{ range (.Paginate (sort .Pages "Params.mapid" "asc")).Pages }}
+      {{ partial "small-map" . }}
     {{ end }}
   </div>
 
