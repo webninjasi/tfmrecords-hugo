@@ -2,7 +2,7 @@ baseURL = "https://tfmrecords.home.kg/" # "http://localhost:8080/"
 languageCode = "en-us"
 title = "TFM Records"
 theme = "records"
-Paginate = 12
+Paginate = 24
 
 [taxonomies]
 	category = "categories"
