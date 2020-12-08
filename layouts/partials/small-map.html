@@ -10,7 +10,11 @@
                 <a href="{{ $.RelPermalink }}">@{{ $.File.BaseFileName }}</a>
             </h2>
 
-            {{ partial "records" $map.records }}
+            {{ if eq $map.category "parkour" }}
+                {{ partial "records" $map.recordsReversed }}
+            {{ else }}
+                {{ partial "records" $map.records }}
+            {{ end }}
         </div>
     </div>
     {{ end }}
