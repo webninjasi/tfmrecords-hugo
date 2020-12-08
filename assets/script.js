@@ -58,7 +58,7 @@ $(function() {
         return false;
     });
 
-    $('img').on("error", function () {
+    $('.map-img').on("error", function () {
         if (this.originalSrc) {
             return;
         }
@@ -136,7 +136,7 @@ $(function() {
 
     if (window.localStorage) {
         if (window.localStorage.getItem('useProxy')) {
-            $('img').each(function () {
+            $('.map-img').each(function () {
                 /*
                 if (this.src.indexOf('imgur') == -1)
                 {
@@ -161,4 +161,34 @@ $(function() {
             $('#' + toggles[k]).click();
         }
     }
+
+    // Theme Switcher
+    function switchTheme(e) {
+        var checked = $(this).is(":checked");
+
+        if (checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+
+        $('.theme-switch input[type="checkbox"]').attr('checked', checked);
+    }
+    function loadTheme() {
+        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+
+            if (currentTheme === 'dark') {
+                $('.theme-switch input[type="checkbox"]').attr('checked', true);
+            }
+        }
+    }
+
+    $('.theme-switch input[type="checkbox"]').change(switchTheme);
+    loadTheme();
 });

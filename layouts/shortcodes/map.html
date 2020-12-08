@@ -11,7 +11,7 @@
     {{ $cat := index $.Site.Data.categories (lower $map.category) }}
     <h1>@{{ $.Page.File.BaseFileName }} <sup>{{ if $cat }}{{ $cat.title }}{{ else }}{{ $map.category }}{{ end }}</sup></h1>
     <div class="map-image{{ if ne $map.category "parkour" }} map-image-rev{{ end }}">
-        <img src="{{ $map.img }}">
+        <img class="map-img" src="{{ $map.img }}">
     </div>
 
     <div class="map-records">
