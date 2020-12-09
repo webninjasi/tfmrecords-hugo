@@ -232,11 +232,11 @@ input:checked + .slider:before {
     --gray-200: rgba(255, 255, 255, 0.2);
     --gray-500: rgba(255, 255, 255, 0.5);
   
-    --color-link: #84b2ff;
-    --color-visited-link: #b88dff;
+    --color-link: #6A8ECC; /* #84b2ff */
+    --color-visited-link: #9370CC; /* #b88dff */
   
-    --body-background: #343a40;
-    --body-font-color: #e9ecef;
+    --body-background: #1F2326; /* #343a40 */
+    --body-font-color: #C6C9CC; /* #e9ecef */
   
     --icon-filter: brightness(0) invert(1);
   
@@ -245,3 +245,19 @@ input:checked + .slider:before {
     --hint-color-danger: #f66;
 }
 
+/* Scrollbar */
+*::-webkit-scrollbar {
+    width: 11px;
+}
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--body-font-color) var(--body-background);
+}
+*::-webkit-scrollbar-track {
+    background: var(--body-background);
+}
+*::-webkit-scrollbar-thumb {
+    background-color: var(--body-font-color) ;
+    border-radius: 6px;
+    border: 3px solid var(--body-background);
+}
