@@ -46,7 +46,7 @@
             </tr>
         </thead>
         <tbody>
-            {{ range $idx, $top := first 10 (sort $toplist "num" "desc") }}
+            {{ range $idx, $top := first 30 (sort $toplist "num" "desc") }}
             <tr>
                 <td>{{ add 1 $idx }}</td>
                 <td><a href="/players/{{ (replace $top.name "#" "%23") }}/">{{ replace (humanize $top.name) " " "_" }}</a></td>
@@ -65,7 +65,7 @@
             </tr>
         </thead>
         <tbody>
-            {{ range $idx, $top := first 10 (sort $topfirst "num" "desc") }}
+            {{ range $idx, $top := first 30 (sort $topfirst "num" "desc") }}
             <tr>
                 <td>{{ add 1 $idx }}</td>
                 <td><a href="/players/{{ (replace $top.name "#" "%23") }}/">{{ replace (humanize $top.name) " " "_" }}</a></td>
