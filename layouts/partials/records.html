@@ -16,10 +16,10 @@
       <tr>
         <td scope="row">{{ $num }}</td>
         <td><a href="/players/{{ (replace $rec.name "#" "%23") }}/">{{ replace (humanize $rec.name) " " "_" }}</a></td>
-        {{ if hasPrefix $rec.link "#" }}
-        <td>{{ printf "%.2f" (div $rec.time 100) }}</td>
-        {{ else }}
+        {{ if hasPrefix $rec.link "http" }}
         <td><a href="{{ $rec.link }}" rel="noreferrer" target="_blank">{{ printf "%.2f" (div $rec.time 100) }}</a></td>
+        {{ else }}
+        <td>{{ printf "%.2f" (div $rec.time 100) }}</td>
         {{ end }}
       </tr>
       {{ end }}
