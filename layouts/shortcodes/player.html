@@ -1,8 +1,25 @@
 {{ with $player := index $.Site.Data.players .Page.File.BaseFileName }}
 
+    {{ $firsts := 0 }}
+    {{ $completions := 0 }}
+
+    {{ range $catname, $count := $player.firsts }}
+        {{ if ne $catname "removed" }}
+            {{ $firsts = add $firsts $count }}
+        {{ end }}
+    {{ end }}
+
+    {{ range $catname, $count := $player.completions }}
+        {{ if ne $catname "removed" }}
+            {{ $completions = add $completions $count }}
+        {{ end }}
+    {{ end }}
+
     <h1>{{ replace (humanize $.Page.File.BaseFileName) " " "_" }} <sup>{{ len $player.maps }}</sup></h1>
 
     <h2>Firsts / Completions</h2>
+
+    <span>{{ $firsts }} / {{ $completions }}</span><br>
 
     <table class="table">
         <thead>
@@ -14,15 +31,19 @@
         </thead>
         <tbody>
             {{ range $catname, $count := $player.completions }}
-            {{ if ne $catname "removed" }}
             {{ $caturl := (replace $catname "-" "/") }}
             {{ $cat := index $.Site.Data.categories $catname }}
             <tr>
                 <td scope="row">
-                    <a href="/categories/{{ $caturl }}/">
+                    {{ if ne $catname "removed" }}
+                        <a href="/categories/{{ $caturl }}/">
+                            <i class="menu-icon" style="background-image: url({{ $cat.icon }});{{ if $cat.iconHeight }}height:{{ $cat.iconHeight }};{{ end }}{{ if $cat.iconWidth }}width:{{ $cat.iconWidth }};{{ end }}"></i>
+                            {{ $cat.title }}
+                        </a>
+                    {{ else }}
                         <i class="menu-icon" style="background-image: url({{ $cat.icon }});{{ if $cat.iconHeight }}height:{{ $cat.iconHeight }};{{ end }}{{ if $cat.iconWidth }}width:{{ $cat.iconWidth }};{{ end }}"></i>
                         {{ $cat.title }}
-                    </a>
+                    {{ end }}
                 </td>
                 <td>{{ int (index $player.firsts $catname) }}</a></td>
                 <td>{{ int $count }}</td>
@@ -33,15 +54,19 @@
                 <td></td>
                 <td colspan="2">
                     {{ range $idx, $mapid := sort $player.maps }}
-                        {{ with $map := index $.Site.Data.maps (string $mapid) }}
+                        {{ $map := index $.Site.Data.maps (string $mapid) }}
+                        {{ if $map }}
                             {{ if eq (lower $map.category) $catname }}
                                 <a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a><br />
+                            {{ end }}
+                        {{ else }}
+                            {{ if eq $catname "removed" }}
+                                <span>@{{ int $mapid }}</span><br />
                             {{ end }}
                         {{ end }}
                     {{ end }}
                 </td>
             </tr>
-            {{ end }}
             {{ end }}
         </tbody>
     </table>
