@@ -57,7 +57,11 @@
                         {{ $map := index $.Site.Data.maps (string $mapid) }}
                         {{ if $map }}
                             {{ if eq (lower $map.category) $catname }}
-                                <a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a><br />
+                                {{ if eq $catname "removed" }}
+                                    <span>@{{ int $mapid }}</span><br />
+                                {{ else }}
+                                    <a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a><br />
+                                {{ end }}
                             {{ end }}
                         {{ else }}
                             {{ if eq $catname "removed" }}
