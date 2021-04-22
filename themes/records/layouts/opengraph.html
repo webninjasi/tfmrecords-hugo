@@ -2,6 +2,21 @@
 <meta property="og:description" content="TFM Records" />
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
+
+{{ if eq .Page.Kind "taxonomy" }}
+  {{ $name := (replace (lower .Page.Title) "/" "-") }}
+  {{ $cat := index $.Site.Data.categories $name }}
+  {{ with $cat }}
+  <meta property="og:image" content="{{ $cat.icon }}" />
+  {{ end }}
+{{ end }}
+
+{{ if eq .Page.Kind "page" }}
+  {{ with $map := index $.Site.Data.maps .Page.File.BaseFileName }}
+  <meta property="og:image" content="{{ $map.img }}" />
+  {{ end }}
+{{ end }}
+
 {{ with $.Params.images }}{{ range first 6 . -}}
 <meta property="og:image" content="{{ . | absURL }}" />
 {{ end }}{{ else -}}
