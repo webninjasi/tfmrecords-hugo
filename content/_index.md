@@ -2,16 +2,13 @@
 title: "Home"
 ---
 
-### Submit your records
+{{< button href="https://discord.gg/w23Gz9f" >}}Discord{{< /button >}}
+{{< button href="https://atelier801.com/topic?f=6&t=877960" >}}EN Thread{{< /button >}}
+{{< button href="https://atelier801.com/topic?f=6&t=876855" >}}TR Thread{{< /button >}}
 
-{{< button href="https://atelier801.com/topic?f=6&t=877960" >}}EN{{< /button >}}
-{{< button href="https://atelier801.com/topic?f=6&t=876855" >}}TR{{< /button >}}
+You can submit your records from our discord server.
 
-## New Stuff!
-
-Now the website is faster and easier to use. Also we have got a discord server now.
-
-{{< button href="https://discord.gg/w23Gz9f" >}}Join Discord Server{{< /button >}}
+{{< discord >}}
 
 ## Parkour
 
