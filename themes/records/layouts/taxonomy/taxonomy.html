@@ -13,6 +13,8 @@
   {{ if and $cat $cat.note }}
   <p class="map-notes">{{ $cat.note | safeHTML }}</p>
   {{ end }}
+  
+  {{ partial "docs/pagination" . }}
 
   <div class="maps-list">
     {{ range (.Paginate (sort .Pages "Params.mapid" "asc")).Pages }}

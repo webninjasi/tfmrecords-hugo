@@ -68,7 +68,7 @@ $(function() {
         window.localStorage.setItem('useProxy', true);
     });
 
-    $('#pagination-list').on('change', function (e) {
+    $('.pagination-list').on('change', function (e) {
         var pageNum = parseInt(this.value);
         if (!isNaN(pageNum)) {
             window.location = window.location.href.replace(/(categories\/[^\/]+)(\/?|\/(page\/.+))$/, '$1/page/' + pageNum);

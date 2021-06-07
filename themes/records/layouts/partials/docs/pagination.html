@@ -40,7 +40,7 @@
     <a href="{{ .URL }}" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
   </li>
   {{- end }}
-  <select id="pagination-list">
+  <select class="pagination-list">
     {{ range $pag.Pagers }}
     <option value="{{ .PageNumber }}"{{ if eq . $pag }} selected="selected"{{ end }}>{{ .PageNumber }}</option>
     {{ end }}
