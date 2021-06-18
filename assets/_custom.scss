@@ -52,6 +52,7 @@
 
 .map-records {
     display: flex;
+    flex-flow: row wrap;
 }
 .map-record {
     flex: 1 0 0;
