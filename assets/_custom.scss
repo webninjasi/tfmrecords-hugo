@@ -53,6 +53,7 @@
 .map-records {
     display: flex;
     flex-flow: row wrap;
+    text-align: center;
 }
 .map-record {
     flex: 1 0 0;
@@ -101,6 +102,10 @@
 .book-footer {
     text-align: center;
     line-height: 2;
+}
+
+ul.pagination {
+    padding: 0;
 }
 
 /* General */
