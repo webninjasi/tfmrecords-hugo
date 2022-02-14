@@ -185,6 +185,8 @@ $(function() {
 
             if (currentTheme === 'dark') {
                 $('.theme-switch input[type="checkbox"]').attr('checked', true);
+            } else {
+                $('.theme-switch input[type="checkbox"]').attr('checked', false);
             }
         }
     }
