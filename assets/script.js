@@ -1,7 +1,5 @@
 
 $(function() {
-    var baseURL = "{{ .Site.BaseURL }}";
-
     var maps = {
         {{ range $index, $page := where .Site.Pages "Params.categories" "!=" nil }}
         "{{ .File.BaseFileName }}": 1,
@@ -31,14 +29,14 @@ $(function() {
             if (search_text in players)
             {
                 $("#book-search-results").text("Redirecting to player page...");
-                document.location = baseURL + "players/" + encodeURIComponent(search_text) + "/";
+                document.location.pathname = "players/" + encodeURIComponent(search_text) + "/";
             } else {
                 search_text += "#0000";
 
                 if (search_text in players)
                 {
                     $("#book-search-results").text("Redirecting to player page...");
-                    document.location = baseURL + "players/" + encodeURIComponent(search_text) + "/";
+                    document.location.pathname = "players/" + encodeURIComponent(search_text) + "/";
                 } else {
                     $("#book-search-results").text("Page not found!");
                 }
@@ -53,7 +51,7 @@ $(function() {
         }
 
         $("#book-search-results").text("Redirecting to map page...");
-        document.location = baseURL + "maps/" + mapid;
+        document.location.pathname = "maps/" + mapid;
 
         return false;
     });
