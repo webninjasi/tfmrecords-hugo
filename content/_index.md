@@ -16,4 +16,4 @@ You can now submit your parkour records in a records enabled #parkour room (e.g.
 
 Use in-game **!submit** command to send your records to us.
 
-{{< button href="https://tfmrecords.tk/categories/parkour/" >}}View Parkour Maps{{< /button >}}
+{{< button href="/categories/parkour/" >}}View Parkour Maps{{< /button >}}
