@@ -1,0 +1,32 @@
+
+{{ $stats := dict }}
+{{ $statsRev := dict }}
+
+{{ range .Site.Data.maps }}
+    {{ $stats = (merge $stats (dict .category (add (math.Min (len .records) 5) (or (index $stats .category) 0)))) }}
+    {{ $statsRev = (merge $statsRev (dict .category (add (math.Min (len .recordsReversed) 5) (or (index $statsRev .category) 0)))) }}
+{{ end }}
+
+<div class="section-container">
+    <table class="table section">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Category</th>
+            <th scope="col">Records</th>
+            <th scope="col">Reversed Records</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ $idx := 0 }}
+            {{ range $name, $taxonomy := .Site.Data.categories }}
+            <tr>
+                <td>{{ $idx = add 1 $idx }}</td>
+                <td>{{ $taxonomy.title }}</td>
+                <td>{{ or (index $stats $name) 0 }}</td>
+                <td>{{ or (index $statsRev $name) 0 }}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+</div>
