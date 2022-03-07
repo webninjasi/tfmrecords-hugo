@@ -4,8 +4,8 @@
     {{ $field2 := "Reversed" }}
 
     {{ if eq $map.category "parkour" }}
-        {{ $field1 = "Old Checkpoint" }}
-        {{ $field2 = "New Checkpoint" }}
+        {{ $field1 = "New Checkpoint" }}
+        {{ $field2 = "Old Checkpoint" }}
     {{ end }}
 
     {{ $cat := index $.Site.Data.categories (lower $map.category) }}
@@ -18,12 +18,20 @@
     <div class="map-records">
         <div class="map-record">
             <h2>{{ $field1 }}</h2>
-            {{ partial "records" $map.records }}
+            {{ if eq $map.category "parkour" }}
+                {{ partial "records" $map.recordsReversed }}
+            {{ else }}
+                {{ partial "records" $map.records }}
+            {{ end }}
         </div>
 
         <div class="map-record">
             <h2>{{ $field2 }}</h2>
-            {{ partial "records" $map.recordsReversed }}
+            {{ if eq $map.category "parkour" }}
+                {{ partial "records" $map.records }}
+            {{ else }}
+                {{ partial "records" $map.recordsReversed }}
+            {{ end }}
         </div>
     </div>
 
