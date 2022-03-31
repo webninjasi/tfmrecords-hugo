@@ -56,6 +56,20 @@ $(function() {
         return false;
     });
 
+    $(".book-search-holder + input").keydown(function() {
+        $(this).prev('.book-search-holder').hide();
+    });
+
+    $(".book-search-holder + input").keyup(function() {
+        if(!$(this).val().length) {
+            $(this).prev('.book-search-holder').show();
+        }
+    });
+
+    $(".book-search-holder").click(function() {
+        $(this).next().focus();
+    });
+
     $('.map-img').on("error", function () {
         if (this.originalSrc) {
             return;

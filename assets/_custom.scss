@@ -98,6 +98,20 @@
     font-weight: bold;
 }
 
+.book-search-holder {
+    color: var(--body-font-color);
+    position: absolute;
+    width: 100%;
+    padding: 0.5rem;
+    left: 0;
+    font-size: 100%;
+}
+
+.book-search-subholder {
+    font-size: 80%;
+    opacity: 0.7;
+}
+
 /* Page Items */
 .book-footer {
     text-align: center;
