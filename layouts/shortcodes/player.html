@@ -17,6 +17,12 @@
 
     <h1>{{ replace (humanize $.Page.File.BaseFileName) " " "_" }} <sup>{{ len $player.maps }}</sup></h1>
 
+    {{ if $player.created }}
+    {{ $authorurl := lower (replace $.Page.File.BaseFileName "#" "%23") }}
+    <a href="/authors/{{ $authorurl }}/">Maps</a>
+    <br />
+    {{end}}
+
     <h2>Firsts / Completions</h2>
 
     <span>{{ $firsts }} / {{ $completions }}</span><br>
