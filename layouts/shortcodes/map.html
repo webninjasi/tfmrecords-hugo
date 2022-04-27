@@ -12,7 +12,7 @@
     {{ $caturl := (replace (lower $map.category) "-" "/") }}
     <h1>@{{ $.Page.File.BaseFileName }} <sup>{{ if $cat }}<a href="/categories/{{ $caturl }}">{{ $cat.title }}</a>{{ else }}{{ $map.category }}{{ end }}</sup></h1>
     {{ $author := replace (humanize (or $map.author "Unknown")) " " "_" }}
-    {{ $authorurl := (replace $author "#" "%23") }}
+    {{ $authorurl := lower (replace $author "#" "%23") }}
     <h3>
         Author:
         <a href="/authors/{{ $authorurl }}/">

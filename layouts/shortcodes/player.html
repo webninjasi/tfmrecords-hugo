@@ -84,7 +84,7 @@
         </thead>
         <tbody>
             {{ range $authorname, $maps := $player.authors }}
-            {{ $authorurl := (replace $authorname "#" "%23") }}
+            {{ $authorurl := lower (replace $authorname "#" "%23") }}
             <tr>
                 <td scope="row">
                     {{ if ne $authorname "unknown" }}
