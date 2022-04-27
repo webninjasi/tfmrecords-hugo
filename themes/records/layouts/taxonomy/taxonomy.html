@@ -7,7 +7,15 @@
       {{ $cat.title }} <sup>{{ len .Pages }}</sup>
     </h1>
   {{ else }}
+    {{ if eq .Data.Singular "author" }}
+
+    <h1>{{ replace (humanize .Title) " " "_" }} <sup>{{ len .Pages }}</sup></h1>
+
+    {{ else }}
+
     <h1>{{ .Title }} <sup>{{ len .Pages }}</sup></h1>
+
+    {{ end }}
   {{ end }}
 
   {{ if and $cat $cat.note }}

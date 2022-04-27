@@ -74,6 +74,51 @@
             {{ end }}
         </tbody>
     </table>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Author</th>
+                <th scope="col">Completions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range $authorname, $maps := $player.authors }}
+            {{ $authorurl := (replace $authorname "#" "%23") }}
+            <tr>
+                <td scope="row">
+                    {{ if ne $authorname "unknown" }}
+                        <a href="/authors/{{ $authorurl }}/">
+                            {{ replace (humanize $authorname) " " "_" }}
+                        </a>
+                    {{ else }}
+                        Unknown
+                    {{ end }}
+                </td>
+                <td>{{ len $maps }}</td>
+                <td><i class="completions-toggle arrow right"></i></td>
+            </tr>
+            <tr class="player-completions">
+                <td scope="row"></td>
+                <td></td>
+                <td colspan="2">
+                    {{ range $idx, $mapid := sort $maps }}
+                        {{ $map := index $.Site.Data.maps (string $mapid) }}
+                        {{ if $map }}
+                            {{ if eq (lower $map.category) "removed" }}
+                                <span>@{{ int $mapid }}</span><br />
+                            {{ else }}
+                                <a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a><br />
+                            {{ end }}
+                        {{ else }}
+                            <span>@{{ int $mapid }}</span><br />
+                        {{ end }}
+                    {{ end }}
+                </td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
 {{ else }}
 
     <a href="https://discord.gg/2WNNURP" target="_blank">Report this page on Discord</a>

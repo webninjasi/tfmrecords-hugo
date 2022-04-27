@@ -6,6 +6,7 @@ Paginate = 24
 
 [taxonomies]
 	category = "categories"
+	author = "authors"
 
 [params]
 	BookToC = false

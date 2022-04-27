@@ -8,6 +8,7 @@ const util = require('util');
 const TEMPLATE_MAP = "---\n\
 categories: %s\n\
 mapid: %d\n\
+authors: %s\n\
 ---\n\
 {{< map >}}";
 const TEMPLATE_PLAYER = "---\n\
@@ -20,6 +21,8 @@ bookHidden: true\n\
 (function()
 {
     let mapId, content, map, dataFilePath, contentFilePath;
+    let authorMap = {};
+    let mapAuthor = {};
     
     let contentMapDir = path.join("content", "maps");
     let contentPlayerDir = path.join("content", "players");
@@ -70,6 +73,15 @@ bookHidden: true\n\
             continue;
         }
 
+        // Add map to author's collection
+        let authorTitle = map.author || "Unknown";
+        let author = authorTitle.toLowerCase();
+        if (!authorMap[author]) {
+            authorMap[author] = [];
+        }
+        authorMap[author].push(mapId);
+        mapAuthor[mapId] = author;
+
         // Skip removed maps
         if (map.category == "removed")
         {
@@ -81,7 +93,7 @@ bookHidden: true\n\
 
         // Create map page
         contentFilePath = path.join("content", "maps", mapId + ".md");
-        fs.writeFileSync(contentFilePath, util.format(TEMPLATE_MAP, map.category, mapId));
+        fs.writeFileSync(contentFilePath, util.format(TEMPLATE_MAP, map.category, mapId, authorTitle));
         console.log(util.format("@%s is updated", mapId));
     }
 
@@ -111,10 +123,27 @@ bookHidden: true\n\
 
         // Parse player data
         player = JSON.parse(content);
-        if (!map)
+        if (!player)
         {
             continue;
         }
+
+        // Update player data
+        if (player.maps) {
+            player.authors = {};
+
+            for (const mapid of player.maps) {
+                const author = mapAuthor[mapid];
+                player.authors[author] = player.authors[author] || [];
+                player.authors[author].push(mapid);
+            }
+        }
+
+        if (authorMap[playerName]) {
+            player.created = authorMap[playerName];
+        }
+
+        fs.writeFileSync(dataFilePath, JSON.stringify(player));
 
         // Create player page
         contentFilePath = path.join("content", "players", playerName + ".md");

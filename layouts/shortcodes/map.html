@@ -11,6 +11,14 @@
     {{ $cat := index $.Site.Data.categories (lower $map.category) }}
     {{ $caturl := (replace (lower $map.category) "-" "/") }}
     <h1>@{{ $.Page.File.BaseFileName }} <sup>{{ if $cat }}<a href="/categories/{{ $caturl }}">{{ $cat.title }}</a>{{ else }}{{ $map.category }}{{ end }}</sup></h1>
+    {{ $author := replace (humanize (or $map.author "Unknown")) " " "_" }}
+    {{ $authorurl := (replace $author "#" "%23") }}
+    <h3>
+        Author:
+        <a href="/authors/{{ $authorurl }}/">
+            {{ $author }}
+        </a>
+    </h3>
     <div class="map-image{{ if ne $map.category "parkour" }} map-image-rev{{ end }}">
         <img class="map-img" src="{{ $map.img }}">
     </div>
