@@ -11,15 +11,17 @@
     {{ $cat := index $.Site.Data.categories (lower $map.category) }}
     {{ $caturl := (replace (lower $map.category) "-" "/") }}
     <h1>@{{ $.Page.File.BaseFileName }} <sup>{{ if $cat }}<a href="/categories/{{ $caturl }}">{{ $cat.title }}</a>{{ else }}{{ $map.category }}{{ end }}</sup></h1>
-    {{ $author := humanize (or $map.author "Unknown") }}
-    {{ $authorTitle := replace $author "-" "#" }}
-    {{ $authorurl := lower $author }}
+
+    {{ $author := index $.Site.Data.authors (or $map.author "Unknown") }}
+    {{ if $author }}
     <h3>
         Author:
-        <a href="/authors/{{ $authorurl }}/">
-            {{ $authorTitle }}
+        <a href="/authors/{{ $author.url }}/">
+            {{ $author.name }}
         </a>
     </h3>
+    {{end}}
+
     <div class="map-image{{ if ne $map.category "parkour" }} map-image-rev{{ end }}">
         <img class="map-img" src="{{ $map.img }}">
     </div>

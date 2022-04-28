@@ -1,4 +1,5 @@
-{{ with $player := index $.Site.Data.players .Page.File.BaseFileName }}
+{{ with $name := index $.Site.Data.playernames .Page.File.BaseFileName }}
+{{ with $player := index $.Site.Data.players $name }}
 
     {{ $firsts := 0 }}
     {{ $completions := 0 }}
@@ -15,11 +16,10 @@
         {{ end }}
     {{ end }}
 
-    <h1>{{ replace (humanize $.Page.File.BaseFileName) " " "_" }} <sup>{{ len $player.maps }}</sup></h1>
+    <h1>{{ $player.name }} <sup>{{ len $player.maps }}</sup></h1>
 
-    {{ if $player.created }}
-    {{ $authorurl := lower $.Page.File.BaseFileName }}
-    <a href="/authors/{{ $authorurl }}/">Maps</a>
+    {{ if $player.isAuthor }}
+    <a href="/authors/{{ $player.url }}/">Maps</a>
     <br />
     {{end}}
 
@@ -89,17 +89,13 @@
             </tr>
         </thead>
         <tbody>
-            {{ range $authorname, $maps := $player.authors }}
-            {{ $authorurl := lower $authorname }}
+            {{ range $name, $maps := $player.mapsByAuthor }}
+            {{ $author := index $.Site.Data.authors $name }}
             <tr>
                 <td scope="row">
-                    {{ if ne $authorname "unknown" }}
-                        <a href="/authors/{{ $authorurl }}/">
-                            {{ replace (humanize $authorname) "-" "#" }}
-                        </a>
-                    {{ else }}
-                        Unknown
-                    {{ end }}
+                    <a href="/authors/{{ $author.url }}/">
+                        {{ $author.name }}
+                    </a>
                 </td>
                 <td>{{ len $maps }}</td>
                 <td><i class="completions-toggle arrow right"></i></td>
@@ -108,7 +104,7 @@
                 <td scope="row"></td>
                 <td></td>
                 <td colspan="2">
-                    {{ range $idx, $mapid := sort $maps }}
+                    {{ range $mapid := sort $maps }}
                         {{ $map := index $.Site.Data.maps (string $mapid) }}
                         {{ if $map }}
                             {{ if eq (lower $map.category) "removed" }}
@@ -126,7 +122,8 @@
         </tbody>
     </table>
 {{ else }}
-
     <a href="https://discord.gg/2WNNURP" target="_blank">Report this page on Discord</a>
-
+{{ end }}
+{{ else }}
+    <a href="https://discord.gg/2WNNURP" target="_blank">Report this page on Discord</a>
 {{ end }}

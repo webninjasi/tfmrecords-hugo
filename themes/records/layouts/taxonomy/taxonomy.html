@@ -9,13 +9,15 @@
   {{ else }}
     {{ if eq .Data.Singular "author" }}
 
-    <h1>{{ replace (humanize .Title) "-" "#" }} <sup>{{ len .Pages }}</sup></h1>
-
-    {{ $player := index $.Site.Data.players $name }}
-    {{ if $player }}
-    {{ $playerurl := lower (replace $name "#" "%23") }}
-    <a href="/players/{{ $playerurl }}/">Profile</a>
-    {{end}}
+    {{ $author := index $.Site.Data.authors $name }}
+    {{ if $author }}
+    <h1>{{ $author.name }} <sup>{{ len .Pages }}</sup></h1>
+    {{ if $author.player }}
+    <a href="/players/{{ $author.url }}/">Profile</a>
+    {{ end }}
+    {{ else }}
+    <h1>{{ .Title }} <sup>{{ len .Pages }}</sup></h1>
+    {{ end }}
 
     {{ else }}
 

@@ -12,17 +12,25 @@ authors: %s\n\
 ---\n\
 {{< map >}}";
 const TEMPLATE_PLAYER = "---\n\
+name: %s\n\
 ---\n\
 {{< player >}}";
 const CONTENT_INDEX = "---\n\
 bookHidden: true\n\
 ---";
 
+const toUpperCase = (str) => str.toUpperCase();
+const capitalize = (name) => name.replace(/^[^a-z]*[a-z]/mi, toUpperCase);
+const tagify = (name) => name.includes('#') ? name : name + '#0000';
+const mousize = (name) => tagify(capitalize(name));
+
 (function()
 {
     let mapId, content, map, dataFilePath, contentFilePath;
-    let authorMap = {};
     let mapAuthor = {};
+    let authors = {};
+    let authorsTemp = {};
+    let playernames = {};
     
     let contentMapDir = path.join("content", "maps");
     let contentPlayerDir = path.join("content", "players");
@@ -75,12 +83,14 @@ bookHidden: true\n\
 
         // Add map to author's collection
         let authorTitle = map.author || "Unknown";
-        let author = authorTitle.toLowerCase();
-        if (!authorMap[author]) {
-            authorMap[author] = [];
-        }
-        authorMap[author].push(mapId);
+        let author = authorTitle.toLowerCase().replace("#", "-").replace("+", "-");
         mapAuthor[mapId] = author;
+        authors[author] = {
+            "url": author,
+            "name": authorTitle,
+        };
+        authors[authorTitle] = authors[author];
+        authorsTemp[authorTitle.toLowerCase()] = authors[author];
 
         // Skip removed maps
         if (map.category == "removed")
@@ -93,7 +103,7 @@ bookHidden: true\n\
 
         // Create map page
         contentFilePath = path.join("content", "maps", mapId + ".md");
-        fs.writeFileSync(contentFilePath, util.format(TEMPLATE_MAP, map.category, mapId, authorTitle.replace("#", "-")));
+        fs.writeFileSync(contentFilePath, util.format(TEMPLATE_MAP, map.category, mapId, author));
         console.log(util.format("@%s is updated", mapId));
     }
 
@@ -130,25 +140,38 @@ bookHidden: true\n\
 
         // Update player data
         if (player.maps) {
-            player.authors = {};
+            player.mapsByAuthor = {};
 
             for (const mapid of player.maps) {
                 const author = mapAuthor[mapid];
-                player.authors[author] = player.authors[author] || [];
-                player.authors[author].push(mapid);
+                player.mapsByAuthor[author] = player.mapsByAuthor[author] || [];
+                player.mapsByAuthor[author].push(mapid);
             }
         }
 
-        if (authorMap[playerName]) {
-            player.created = authorMap[playerName];
+        player.url = playerName.toLowerCase().replace("#", "-").replace("+", "-");
+        player.name = mousize(playerName);
+        playernames[player.url] = playerName;
+
+        if (authorsTemp[playerName]) {
+            player.isAuthor = true;
+            authors[player.name].player = true;
         }
 
         fs.writeFileSync(dataFilePath, JSON.stringify(player));
 
         // Create player page
-        contentFilePath = path.join("content", "players", playerName + ".md");
-        fs.writeFileSync(contentFilePath, TEMPLATE_PLAYER);
+        contentFilePath = path.join("content", "players", player.url + ".md");
+        fs.writeFileSync(contentFilePath, util.format(TEMPLATE_PLAYER, player.name));
         console.log(util.format("Player page %s is updated", playerName));
     }
+
+    dataFilePath = path.join("data", "authors.json");
+    fs.writeFileSync(dataFilePath, JSON.stringify(authors));
+    console.log("Authors data updated");
+
+    dataFilePath = path.join("data", "playernames.json");
+    fs.writeFileSync(dataFilePath, JSON.stringify(playernames));
+    console.log("Player names data updated");
 })();
 

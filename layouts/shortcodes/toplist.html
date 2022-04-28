@@ -49,7 +49,8 @@
             {{ range $idx, $top := first 30 (sort $toplist "num" "desc") }}
             <tr>
                 <td>{{ add 1 $idx }}</td>
-                <td><a href="/players/{{ (replace $top.name "#" "%23") }}/">{{ replace (humanize $top.name) " " "_" }}</a></td>
+                {{ $player := index $.Site.Data.players $top.name }}
+                <td><a href="/players/{{ $player.url }}/">{{ $player.name }}</a></td>
                 <td>{{ $top.num }}</td>
             </tr>
             {{ end }}
@@ -68,7 +69,8 @@
             {{ range $idx, $top := first 30 (sort $topfirst "num" "desc") }}
             <tr>
                 <td>{{ add 1 $idx }}</td>
-                <td><a href="/players/{{ (replace $top.name "#" "%23") }}/">{{ replace (humanize $top.name) " " "_" }}</a></td>
+                {{ $player := index $.Site.Data.players $top.name }}
+                <td><a href="/players/{{ $player.url }}/">{{ $player.name }}</a></td>
                 <td>{{ $top.num }}</td>
             </tr>
             {{ end }}
