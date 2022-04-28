@@ -9,7 +9,7 @@
   {{ else }}
     {{ if eq .Data.Singular "author" }}
 
-    <h1>{{ replace (humanize .Title) " " "_" }} <sup>{{ len .Pages }}</sup></h1>
+    <h1>{{ replace (humanize .Title) "-" "#" }} <sup>{{ len .Pages }}</sup></h1>
 
     {{ $player := index $.Site.Data.players $name }}
     {{ if $player }}

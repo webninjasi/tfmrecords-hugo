@@ -18,7 +18,7 @@
     <h1>{{ replace (humanize $.Page.File.BaseFileName) " " "_" }} <sup>{{ len $player.maps }}</sup></h1>
 
     {{ if $player.created }}
-    {{ $authorurl := lower (replace $.Page.File.BaseFileName "#" "%23") }}
+    {{ $authorurl := lower $.Page.File.BaseFileName }}
     <a href="/authors/{{ $authorurl }}/">Maps</a>
     <br />
     {{end}}
@@ -90,12 +90,12 @@
         </thead>
         <tbody>
             {{ range $authorname, $maps := $player.authors }}
-            {{ $authorurl := lower (replace $authorname "#" "%23") }}
+            {{ $authorurl := lower $authorname }}
             <tr>
                 <td scope="row">
                     {{ if ne $authorname "unknown" }}
                         <a href="/authors/{{ $authorurl }}/">
-                            {{ replace (humanize $authorname) " " "_" }}
+                            {{ replace (humanize $authorname) "-" "#" }}
                         </a>
                     {{ else }}
                         Unknown

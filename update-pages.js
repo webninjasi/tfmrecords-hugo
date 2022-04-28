@@ -93,7 +93,7 @@ bookHidden: true\n\
 
         // Create map page
         contentFilePath = path.join("content", "maps", mapId + ".md");
-        fs.writeFileSync(contentFilePath, util.format(TEMPLATE_MAP, map.category, mapId, authorTitle));
+        fs.writeFileSync(contentFilePath, util.format(TEMPLATE_MAP, map.category, mapId, authorTitle.replace("#", "-")));
         console.log(util.format("@%s is updated", mapId));
     }
 
