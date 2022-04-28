@@ -14,6 +14,7 @@
     <h1>{{ $author.name }} <sup>{{ len .Pages }}</sup></h1>
     {{ if $author.player }}
     <a href="/players/{{ $author.url }}/">Profile</a>
+    <br />
     {{ end }}
     {{ else }}
     <h1>{{ .Title }} <sup>{{ len .Pages }}</sup></h1>
