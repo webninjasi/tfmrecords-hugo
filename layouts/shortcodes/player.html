@@ -51,7 +51,7 @@
                                 {{ if eq $catname "removed" }}
                                     <span>@{{ int $mapid }}</span><br />
                                 {{ else }}
-                                    <a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a><br />
+                                    <a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a>{{ if in $player.firstInMap $mapid }} <b>(First)</b>{{ end }}<br />
                                 {{ end }}
                             {{ end }}
                         {{ else }}
@@ -95,7 +95,7 @@
                             {{ if eq (lower $map.category) "removed" }}
                                 <span>@{{ int $mapid }}</span><br />
                             {{ else }}
-                                <a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a><br />
+                                <a href="/maps/{{ int $mapid }}">@{{ int $mapid }}</a>{{ if in $player.firstInMap $mapid }} <b>(First)</b>{{ end }}<br />
                             {{ end }}
                         {{ else }}
                             <span>@{{ int $mapid }}</span><br />

@@ -34,6 +34,7 @@ const mousize = (name) => tagify(capitalize(name));
     let stats = [];
     let statCategories = {};
     let categories = {};
+    let firstInMap = {};
     
     let contentMapDir = path.join("content", "maps");
     let contentPlayerDir = path.join("content", "players");
@@ -141,7 +142,20 @@ const mousize = (name) => tagify(capitalize(name));
         }
 
         // Subcategories
-        map.category = map.category.replace(/-/g, '/')
+        map.category = map.category.replace(/-/g, '/');
+
+        let pname;
+        pname = map.records[0]?.name;
+        if (pname) {
+            firstInMap[pname] = firstInMap[pname] || [];
+            firstInMap[pname].push(mapId);
+        }
+
+        pname = map.recordsReversed[0]?.name;
+        if (pname) {
+            firstInMap[pname] = firstInMap[pname] || [];
+            firstInMap[pname].push(mapId);
+        }
 
         // Create map page
         contentFilePath = path.join("content", "maps", mapId + ".md");
@@ -208,6 +222,7 @@ const mousize = (name) => tagify(capitalize(name));
         Object.keys(player.completions).map(cat => statCategories[cat] = true);
 
         player.total = total;
+        player.firstInMap = firstInMap[playerName];
 
         stats.push({
             url: player.url,
