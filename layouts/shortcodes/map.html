@@ -10,7 +10,7 @@
 
     {{ $cat := index $.Site.Data.categories (lower $map.category) }}
     {{ $caturl := (replace (lower $map.category) "-" "/") }}
-    <h1>@{{ $.Page.File.BaseFileName }} <sup>{{ if $cat }}<a href="/categories/{{ $caturl }}">{{ $cat.title }}</a>{{ else }}{{ $map.category }}{{ end }}</sup></h1>
+    <h1>@{{ $.Page.File.BaseFileName }} <sup>{{ if $cat }}<a href="/categories/{{ $caturl }}">{{ $cat.fullTitle }}</a>{{ else }}{{ $map.category }}{{ end }}</sup></h1>
 
     {{ $author := index $.Site.Data.authors (or $map.author "Unknown") }}
     {{ if $author }}

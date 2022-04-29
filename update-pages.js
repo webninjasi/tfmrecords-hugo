@@ -31,6 +31,9 @@ const mousize = (name) => tagify(capitalize(name));
     let authors = {};
     let authorsTemp = {};
     let playernames = {};
+    let stats = [];
+    let statCategories = {};
+    let categories = {};
     
     let contentMapDir = path.join("content", "maps");
     let contentPlayerDir = path.join("content", "players");
@@ -53,8 +56,47 @@ const mousize = (name) => tagify(capitalize(name));
     contentFilePath = path.join("content", "players", "_index.md");
     fs.writeFileSync(contentFilePath, CONTENT_INDEX);
 
-    let dataPath = path.join("data", "maps");
-    let dataFiles = fs.readdirSync(dataPath);
+    let dataPath, dataFiles;
+
+    dataPath = path.join("data", "categories");
+    dataFiles = fs.readdirSync(dataPath);
+
+    for (let i in dataFiles)
+    {
+        dataFilePath = path.join("data", "categories", dataFiles[i]);
+        let categoryName = path.basename(dataFilePath, ".json");
+
+        content = fs.readFileSync(dataFilePath);
+        if (!content)
+        {
+            continue;
+        }
+
+        const category = JSON.parse(content);
+        if (!category)
+        {
+            continue;
+        }
+
+        categories[categoryName] = category;
+    }
+
+    for (const categoryName in categories) {
+        dataFilePath = path.join("data", "categories", categoryName + ".json");
+        const category = categories[categoryName];
+
+        if (categoryName.includes('-') && categories[category.parent]) {
+            category.fullTitle = categories[category.parent].title + " " + category.title;
+        } else {
+            category.fullTitle = category.title;
+        }
+
+        fs.writeFileSync(dataFilePath, JSON.stringify(category));
+        console.log(util.format("Category %s is updated", categoryName));
+    }
+
+    dataPath = path.join("data", "maps");
+    dataFiles = fs.readdirSync(dataPath);
 
     // Read map data files
     for (let i in dataFiles)
@@ -153,6 +195,28 @@ const mousize = (name) => tagify(capitalize(name));
         player.name = mousize(playerName);
         playernames[player.url] = playerName;
 
+        const firsts = player.firsts || {};
+        const completions = player.completions || {};
+        const total = {
+            firsts: Object.keys(firsts).reduce(
+                (ret, key) => key == "removed" ? ret : ret + firsts[key], 0
+            ),
+            completions: Object.keys(completions).reduce(
+                (ret, key) => key == "removed" ? ret : ret + completions[key], 0
+            ),
+        };
+        Object.keys(player.completions).map(cat => statCategories[cat] = true);
+
+        player.total = total;
+
+        stats.push({
+            url: player.url,
+            name: player.name,
+            firsts,
+            completions,
+            total,
+        });
+
         if (authorsTemp[playerName]) {
             player.isAuthor = true;
             authors[player.name].player = true;
@@ -166,6 +230,50 @@ const mousize = (name) => tagify(capitalize(name));
         console.log(util.format("Player page %s is updated", playerName));
     }
 
+    const inLeaderboard = {};
+
+    function sortFilterStats(f) {
+        stats.sort(f);
+
+        for (let i = 0; i < 10; i ++) {
+            if (!stats[i]) {
+                return;
+            }
+
+            inLeaderboard[stats[i].name] = true;
+        }
+    }
+
+    sortFilterStats((a, b) => b.total.firsts - a.total.firsts);
+    sortFilterStats((a, b) => b.total.completions - a.total.completions);
+
+    const statCategoryList = Object.keys(statCategories);
+    const categoryStats = {};
+
+    stats.map((player) => statCategoryList.map(cat => {
+        player.firsts[cat] = player.firsts[cat] || 0;
+        player.completions[cat] = player.completions[cat] || 0;
+        
+        categoryStats[cat] = categoryStats[cat] || {
+            firsts: 0,
+            completions: 0,
+        };
+        categoryStats[cat].firsts += player.firsts[cat];
+        categoryStats[cat].completions += player.completions[cat];
+    }));
+
+    statCategoryList.map(cat => {
+        sortFilterStats((a, b) => b.firsts[cat] - a.firsts[cat]);
+        sortFilterStats((a, b) => b.completions[cat] - a.completions[cat]);
+    });
+
+    statCategoryList.sort((a, b) => categoryStats[b].completions - categoryStats[a].completions);
+
+    const leaderboard = {
+        "categories": statCategoryList,
+        "players": stats.filter(player => inLeaderboard[player.name])
+    };
+
     dataFilePath = path.join("data", "authors.json");
     fs.writeFileSync(dataFilePath, JSON.stringify(authors));
     console.log("Authors data updated");
@@ -173,5 +281,9 @@ const mousize = (name) => tagify(capitalize(name));
     dataFilePath = path.join("data", "playernames.json");
     fs.writeFileSync(dataFilePath, JSON.stringify(playernames));
     console.log("Player names data updated");
+
+    dataFilePath = path.join("data", "leaderboard.json");
+    fs.writeFileSync(dataFilePath, JSON.stringify(leaderboard));
+    console.log("Leaderboard data updated");
 })();
 

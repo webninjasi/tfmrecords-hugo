@@ -246,6 +246,11 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
+/* Light Theme */
+:root {
+    --bg-sorting: #fafafa;
+}
+
 /* Dark Theme */
 [data-theme="dark"] {
     --gray-100: rgba(255, 255, 255, 0.1);
@@ -257,6 +262,7 @@ input:checked + .slider:before {
   
     --body-background: #1F2326; /* #343a40 */
     --body-font-color: #C6C9CC; /* #e9ecef */
+    --bg-sorting: #24282b;
   
     --icon-filter: brightness(0) invert(1);
   

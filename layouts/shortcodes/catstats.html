@@ -22,7 +22,7 @@
             {{ range $name, $taxonomy := .Site.Data.categories }}
             <tr>
                 <td>{{ $idx = add 1 $idx }}</td>
-                <td>{{ $taxonomy.title }}</td>
+                <td>{{ $taxonomy.fullTitle }}</td>
                 <td>{{ or (index $stats $name) 0 }}</td>
                 <td>{{ or (index $statsRev $name) 0 }}</td>
             </tr>

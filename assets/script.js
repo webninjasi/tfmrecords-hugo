@@ -1,16 +1,5 @@
 
 $(function() {
-    var maps = {
-        {{ range $index, $page := where .Site.Pages "Params.categories" "!=" nil }}
-        "{{ .File.BaseFileName }}": 1,
-        {{ end }}
-    };
-    var players = {
-        {{ range $index, $page := where .Site.Pages "Type" "==" "players" }}
-        "{{ .File.BaseFileName }}": 1,
-        {{ end }}
-    };
-
     $('.date-convert').each(function() {
         $(this).text(moment.unix($(this).text()).format('LL'));
     });
@@ -24,28 +13,28 @@ $(function() {
         var mapid = parseInt(search_text.replace('@', ''));
 
         if (isNaN(mapid)) {
-            search_text = search_text.toLowerCase();
+            var playerName = search_text.toLowerCase().replace("#", "-").replace("+", "-");
 
-            if (search_text in players)
-            {
+            if (search_text.indexOf("#") == -1) {
+                playerName += "-0000";
+            }
+
+            if (players.indexOf(playerName) != -1) {
                 $("#book-search-results").text("Redirecting to player page...");
-                document.location.pathname = "players/" + encodeURIComponent(search_text) + "/";
-            } else {
-                search_text += "#0000";
-
-                if (search_text in players)
-                {
-                    $("#book-search-results").text("Redirecting to player page...");
-                    document.location.pathname = "players/" + encodeURIComponent(search_text) + "/";
-                } else {
-                    $("#book-search-results").text("Page not found!");
-                }
+                document.location.pathname = "players/" + encodeURIComponent(playerName) + "/";
+            }
+            else if (authors.indexOf(playerName) != -1) {
+                $("#book-search-results").text("Redirecting to author page...");
+                document.location.pathname = "authors/" + encodeURIComponent(playerName) + "/";
+            } 
+            else {
+                $("#book-search-results").text("Page not found!");
             }
 
             return false;
         }
         
-        if (!(mapid in maps)) {
+        if (maps.indexOf(mapid.toString()) == -1) {
             $("#book-search-results").text("Page not found!");
             return false;
         }

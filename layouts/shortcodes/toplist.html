@@ -1,79 +1,188 @@
-
-{{ $completions := dict }}
-{{ $firsts := dict }}
-{{ $toplist := slice }}
-{{ $topfirst := slice }}
-
-{{ range .Site.Data.maps }}
-    {{ range first 5 .records }}
-        {{ $nameLC := lower (trim .name " ") }}
-        {{ $completions = (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
-    {{ end }}
-    {{ range first 5 .recordsReversed }}
-        {{ $nameLC := lower (trim .name " ") }}
-        {{ $completions = (merge $completions (dict $nameLC (add 1 (or (index $completions $nameLC) 0)))) }}
-    {{ end }}
-{{ end }}
-
-{{ range .Site.Data.maps }}
-    {{ if or (ne .category "parkour") (ge (len .records) 3) }}
-        {{ range first 1 .records }}
-                {{ $nameLC := lower (trim .name " ") }}
-                {{ $firsts = (merge $firsts (dict $nameLC (add 1 (or (index $firsts $nameLC) 0)))) }}
-        {{ end }}
-    {{ end }}
-    {{ range first 1 .recordsReversed }}
-        {{ $nameLC := lower (trim .name " ") }}
-        {{ $firsts = (merge $firsts (dict $nameLC (add 1 (or (index $firsts $nameLC) 0)))) }}
-    {{ end }}
-{{ end }}
-
-{{ range $name, $num := $completions }}
-    {{ $toplist = $toplist | append (dict "name" $name "num" $num) }}
-{{ end }}
-
-{{ range $name, $num := $firsts }}
-    {{ $topfirst = $topfirst | append (dict "name" $name "num" $num) }}
-{{ end }}
-
-<div class="section-container">
-    <table class="table section">
+<div class="section-container" style="display: block;">
+    <style>
+        .even, .odd {
+            background-color: initial !important;
+        }
+        td {
+            border: 0 !important;
+            text-align: center;
+        }
+        tr, th {
+            border: 0 !important;
+            border-bottom: 1px solid var(--body-font-color) !important;
+        }
+        .sorting_1 {
+            background-color: var(--bg-sorting) !important;
+        }
+        #search_category {
+            padding: 0.5rem;
+            border: 0;
+            border-radius: 0.25rem;
+            background: var(--gray-100);
+            color: var(--body-font-color);
+        }
+        #visible {
+            margin: 0 !important;
+        }
+    </style>
+    <input id="search_category" type="text" aria-label="Search Category" placeholder="Search Category" />
+    <table id="visible" class="nowrap row-border order-column">
         <thead>
             <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Maps</th>
+                <th scope="col" rowspan="2">#</th>
+                <th scope="col" rowspan="2">Name</th>
+                <th scope="col" colspan="2">Total</th>
+
+                {{ range $catname := $.Site.Data.leaderboard.categories }}
+                {{ with $cat := index $.Site.Data.categories $catname }}
+                <th scope="col" colspan="2">{{ $cat.fullTitle }}</th>
+                {{ end }}
+                {{ end }}
+            </tr>
+            <tr>
+                <th scope="col">Firsts</th>
+                <th scope="col">Maps</th>
+
+                {{ range $catname := $.Site.Data.leaderboard.categories }}
+                {{ with $cat := index $.Site.Data.categories $catname }}
+                <th scope="col">Firsts</th>
+                <th scope="col">Maps</th>
+                {{ end }}
+                {{ end }}
             </tr>
         </thead>
         <tbody>
-            {{ range $idx, $top := first 30 (sort $toplist "num" "desc") }}
+        </tbody>
+    </table>
+
+    <table id="hidden" style="display: none !important;">
+        <thead>
             <tr>
-                <td>{{ add 1 $idx }}</td>
-                {{ $player := index $.Site.Data.players $top.name }}
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Total Firsts</th>
+                <th scope="col">Total Maps</th>
+
+                {{ range $catname := $.Site.Data.leaderboard.categories }}
+                {{ with $cat := index $.Site.Data.categories $catname }}
+                <th scope="col">{{ $cat.fullTitle }} Firsts</th>
+                <th scope="col">{{ $cat.fullTitle  }} Maps</th>
+                {{ end }}
+                {{ end }}
+            </tr>
+        </thead>
+        <tbody>
+            {{ range $idx, $player := $.Site.Data.leaderboard.players }}
+            <tr>
+                <td></td>
                 <td><a href="/players/{{ $player.url }}/">{{ $player.name }}</a></td>
-                <td>{{ $top.num }}</td>
+                <td>{{ $player.total.firsts }}</td>
+                <td>{{ $player.total.completions }}</td>
+
+                {{ range $catname := $.Site.Data.leaderboard.categories }}
+                {{ with $cat := index $.Site.Data.categories $catname }}
+                <td>{{ index $player.firsts $catname }}</td>
+                <td>{{ index $player.completions $catname }}</td>
+                {{ end }}
+                {{ end }}
             </tr>
             {{ end }}
         </tbody>
     </table>
-
-    <table class="table section">
-        <thead>
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Firsts</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{ range $idx, $top := first 30 (sort $topfirst "num" "desc") }}
-            <tr>
-                <td>{{ add 1 $idx }}</td>
-                {{ $player := index $.Site.Data.players $top.name }}
-                <td><a href="/players/{{ $player.url }}/">{{ $player.name }}</a></td>
-                <td>{{ $top.num }}</td>
-            </tr>
+  
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script>
+        var categories = ([
+            {{ range $catname := $.Site.Data.leaderboard.categories }}
+            {{ with $cat := index $.Site.Data.categories $catname }}
+            "{{ $cat.fullTitle  }}",
             {{ end }}
-        </tbody>
-    </table>
+            {{ end }}
+        ]).map(cat => cat.toLowerCase());
+
+        var hiddenTable, visibleTable, lastOrder;
+        hiddenTable = $('#hidden').DataTable({
+            "dom": "",
+            "pageLength": 10,
+        });
+        visibleTable = $('#visible').DataTable({
+            "paging": false,
+            "searching": false,
+            "info": false,
+            "scrollX": true,
+            "orderMulti": false,
+            "order": [[2, 'desc']],
+            "columnDefs": [
+                { "orderable": false, "targets": 0 },
+                { "orderable": false, "targets": 1 },
+            ],
+            "columns": [
+                { "orderSequence": [ "asc" ] },
+                { "orderSequence": [ "desc" ] },
+                { "orderSequence": [ "desc" ] },
+                { "orderSequence": [ "desc" ] },
+
+                {{ range $catname := $.Site.Data.leaderboard.categories }}
+                {{ with $cat := index $.Site.Data.categories $catname }}
+                { "orderSequence": [ "desc" ] },
+                { "orderSequence": [ "desc" ] },
+                {{ end }}
+                {{ end }}
+            ],
+            "drawCallback": function() {
+                var order = this.api().order();
+                if (order[0][1] != 'desc' || lastOrder == order[0][0]) {
+                    return;
+                }
+
+                lastOrder = order[0][0];
+                this.api().clear();
+                hiddenTable.order(order).draw();
+
+                var rows = hiddenTable.rows({
+                    'order': 'current',
+                    'page':'current'
+                }).data();
+
+                var i = 1;
+ 
+                rows.cells(null, 0, {
+                    'search': 'applied',
+                    'order': 'applied'
+                }).every(function (cell) {
+                    this.data(i ++); 
+                });
+
+                this.api().rows.add(rows).draw();
+                this.api().columns.adjust().draw();
+            }
+        });
+        $("#search_category").keypress(function(e) {
+            var search_text = $(this).val().trim().toLowerCase();
+
+            if (!search_text) {
+                visibleTable.columns().visible(true, false);
+                visibleTable.columns.adjust().draw();
+                return true;
+            }
+
+            var idx = categories.indexOf(search_text);
+
+            if (idx == -1) {
+                return true;
+            }
+
+            visibleTable.columns().visible(false, false);
+            visibleTable.column(0).visible(true, false);
+            visibleTable.column(1).visible(true, false);
+            visibleTable.column(2).visible(true, false);
+            visibleTable.column(3).visible(true, false);
+            visibleTable.column(4 + idx * 2).visible(true, false);
+            visibleTable.column(4 + idx * 2 + 1).visible(true, false);
+
+            visibleTable.columns.adjust().draw();
+
+            return true;
+        });
+    </script>
 </div>

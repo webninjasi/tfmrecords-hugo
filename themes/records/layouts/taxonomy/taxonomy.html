@@ -4,7 +4,7 @@
   {{ if $cat }}
     <h1>
       <img class="category-icon" src="{{ $cat.icon }}" />
-      {{ $cat.title }} <sup>{{ len .Pages }}</sup>
+      {{ $cat.fullTitle }} <sup>{{ len .Pages }}</sup>
     </h1>
   {{ else }}
     {{ if eq .Data.Singular "author" }}

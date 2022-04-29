@@ -9,7 +9,7 @@
   {{ $name := (replace (lower .Title) "/" "-") }}
 
   {{ with $cat := index $.Site.Data.categories $name }}
-    {{ $title = $cat.title }}
+    {{ $title = $cat.fullTitle }}
   {{ end }}
 
   {{ with $author := index $.Site.Data.authors $name }}

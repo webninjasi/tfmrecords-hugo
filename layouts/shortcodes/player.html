@@ -1,21 +1,5 @@
 {{ with $name := index $.Site.Data.playernames .Page.File.BaseFileName }}
 {{ with $player := index $.Site.Data.players $name }}
-
-    {{ $firsts := 0 }}
-    {{ $completions := 0 }}
-
-    {{ range $catname, $count := $player.firsts }}
-        {{ if ne $catname "removed" }}
-            {{ $firsts = add $firsts $count }}
-        {{ end }}
-    {{ end }}
-
-    {{ range $catname, $count := $player.completions }}
-        {{ if ne $catname "removed" }}
-            {{ $completions = add $completions $count }}
-        {{ end }}
-    {{ end }}
-
     <h1>{{ $player.name }} <sup>{{ len $player.maps }}</sup></h1>
 
     {{ if $player.isAuthor }}
@@ -25,7 +9,7 @@
 
     <h2>Firsts / Completions</h2>
 
-    <span>{{ $firsts }} / {{ $completions }}</span><br>
+    <span>{{ $player.total.firsts }} / {{ $player.total.completions }}</span><br>
 
     <table class="table">
         <thead>
@@ -44,11 +28,11 @@
                     {{ if ne $catname "removed" }}
                         <a href="/categories/{{ $caturl }}/">
                             <i class="menu-icon" style="background-image: url({{ $cat.icon }});{{ if $cat.iconHeight }}height:{{ $cat.iconHeight }};{{ end }}{{ if $cat.iconWidth }}width:{{ $cat.iconWidth }};{{ end }}"></i>
-                            {{ $cat.title }}
+                            {{ $cat.fullTitle }}
                         </a>
                     {{ else }}
                         <i class="menu-icon" style="background-image: url({{ $cat.icon }});{{ if $cat.iconHeight }}height:{{ $cat.iconHeight }};{{ end }}{{ if $cat.iconWidth }}width:{{ $cat.iconWidth }};{{ end }}"></i>
-                        {{ $cat.title }}
+                        {{ $cat.fullTitle }}
                     {{ end }}
                 </td>
                 <td>{{ int (index $player.firsts $catname) }}</a></td>
