@@ -1,0 +1,173 @@
+
+<style>
+  #time_age {
+    width: 7em;
+  }
+
+  #time_text {
+    width: 32em;
+  }
+
+  #time_age, #time_text {
+    margin: 0.5em;
+    padding: 0.2em;
+  }
+</style>
+
+<label for="time_age">Age:</label>
+<input id="time_age" name="time_age" type="number" placeholder="Your age" value="" min="1" max="200" />
+<br />
+<label for="time_text">/time:</label>
+<input id="time_text" name="time_text" type="text" placeholder="Output of /time command from the game" />
+
+<div id="time_result"></div>
+
+<script>
+// en,tr,fr,br,es,ro
+var validDays = ['days', 'gün', 'jours', 'dias', 'días', 'zile'];
+var answers = [
+  {
+    results: function(percent, emote) {
+      return `You have spent around <b>${percent}%</b> of your life playing this game ${emote}`
+    },
+    exceed: function(percent) {
+      return `Are you sure you've spent ${percent}% of your life on this game?`
+    },
+    calculations: [
+      function(times) {
+        return `You could spend your time watching all ~8000 episodes of Sazae-san <b>${times}</b> times from start to end.`
+      },
+      function(times) {
+        return `Instead you could travel the distance of ~10.000 km between Hong Kong and Paris on foot <b>${times}</b> times.`
+      },
+      function(times) {
+        return `You could binge watch <b>${times}</b> seasons of standard length animes.`
+      },
+    ],
+  },
+  {
+    results: function(percent, emote) {
+      return `Hayatının <b>%${percent}</b> kadarını bu oyunda geçirdin ${emote}`
+    },
+    exceed: function(percent) {
+      return `Bu oyunda hayatının %${percent} kadarını harcadığına emin misin?`
+    },
+    calculations: [
+      function(times) {
+        return `Bu süreyi ~8000 bölümü olan Sazae-san animesini <b>${times}</b> kere baştan sona izleyerek geçirebilirdin.`
+      },
+      function(times) {
+        return `Bunun yerine Hong Kong ve Paris arası ~10.000 km mesafeyi <b>${times}</b> defa yürüyerek katedebilirdin.`
+      },
+      function(times) {
+        return `Tek oturuşta standart uzunlukta animelerin <b>${times}</b> sezonunu izleyebilirdin.`
+      },
+    ],
+  },
+];
+var calculations = [
+  function(days, percent, format) {
+    if (days < 40) {
+      return;
+    }
+
+    var times = (days / 40).toFixed(2) * 1;
+    return format(times);
+  },
+  function(days, percent, format) {
+    var hkParisDays = 10000 / 120;
+
+    if (days < hkParisDays) {
+      return;
+    }
+
+    var times = (days / hkParisDays).toFixed(2) * 1;
+    return format(times);
+  },
+  function(days, percent, format) {
+    return format(days * 5);
+  },
+];
+
+var elmAge = document.getElementById("time_age");
+var elmText = document.getElementById("time_text");
+var elmResult = document.getElementById("time_result");
+
+var age = 0;
+var days = 0;
+var lang = 0;
+
+elmAge.onchange = function() {
+  age = parseInt(elmAge.value) || 0;
+  showResults();
+}
+
+elmText.onchange = function() {
+  var m = elmText.value.trim().match(/(\d+)(?: (\S+?)(?:,|$))?/);
+
+  days = 0;
+
+  if (m && m[1]) {
+    days = parseInt(m[1]);
+
+    if (isNaN(days)) {
+      days = 0;
+    } else if (m[2]) {
+      lang = validDays.indexOf(m[2]);
+
+      if (lang < 0 || lang >= answers.length || !answers[lang]) {
+        lang = 0;
+      }
+    }
+  }
+
+  showResults();
+}
+
+function makeEmote(len) {
+  if (len < 1) {
+    return "";
+  }
+
+  var down = "";
+  for (var i = 0; i < len; i ++) {
+    down +=  "_";
+  }
+
+  return "(-" + down + "-)";
+}
+
+function showResults() {
+  if (days < 1 || age < 1) {
+    elmResult.innerHTML = "";
+    return;
+  }
+  
+  var percent = (days / (age * 365) * 100).toFixed(2) * 1;
+  var emote = makeEmote(Math.round((percent - 3) / 2));
+  var advices = [];
+  var str;
+
+  if (percent > 100) {
+    str = answers[lang].exceed(percent);
+  } else {
+    str = answers[lang].results(percent, emote);
+  }
+
+  str += "<br />";
+
+  for (var i = 0; i < calculations.length; i ++) {
+    var result = calculations[i](days, percent, answers[lang].calculations[i]);
+
+    if (result) {
+      advices.push(result);
+    }
+  }
+
+  if (advices.length > 0) {
+    str += advices[Math.floor(Math.random() * advices.length)];
+  }
+  
+  elmResult.innerHTML = str;
+}
+</script>
