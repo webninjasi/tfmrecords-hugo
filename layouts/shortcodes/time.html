@@ -28,7 +28,7 @@ var validDays = ['days', 'gün', 'jours', 'dias', 'días', 'zile'];
 var answers = [
   {
     results: function(percent, emote) {
-      return `You have spent around <b>${percent}%</b> of your life playing this game ${emote}`
+      return `You have spent around <b>${percent}%</b> of your life playing this game. ${emote}`
     },
     exceed: function(percent) {
       return `Are you sure you've spent ${percent}% of your life on this game?`
@@ -43,11 +43,20 @@ var answers = [
       function(times) {
         return `You could binge watch <b>${times}</b> seasons of standard length animes.`
       },
+      function(times) {
+        return `You could cross Sahara desert <b>${times}</b> times on foot.`
+      },
+      function(times) {
+        return `Alternatively you could complete the longest F1 track the Pescara Circuit <b>${times}</b> times on foot.`
+      },
+      function(times) {
+        return `You could instead take a one-way trip to Mars <b>${times}</b> times.`
+      },
     ],
   },
   {
     results: function(percent, emote) {
-      return `Hayatının <b>%${percent}</b> kadarını bu oyunda geçirdin ${emote}`
+      return `Hayatının <b>%${percent}</b> kadarını bu oyunda geçirdin. ${emote}`
     },
     exceed: function(percent) {
       return `Bu oyunda hayatının %${percent} kadarını harcadığına emin misin?`
@@ -60,7 +69,16 @@ var answers = [
         return `Bunun yerine Hong Kong ve Paris arası ~10.000 km mesafeyi <b>${times}</b> defa yürüyerek katedebilirdin.`
       },
       function(times) {
-        return `Tek oturuşta standart uzunlukta animelerin <b>${times}</b> sezonunu izleyebilirdin.`
+        return `Bunun yerine tek oturuşta standart uzunlukta animelerin <b>${times}</b> sezonunu izleyebilirdin.`
+      },
+      function(times) {
+        return `Alternatif olarak Sahara çölünü <b>${times}</b> defa yürüyerek aşabilirdin.`
+      },
+      function(times) {
+        return `Alternatif olarak en uzun F1 pisti Pescara pistini <b>${times}</b> defa yürüyerek dolanabilirdin.`
+      },
+      function(times) {
+        return `Bunun yerine <b>${times}</b> defa Mars'a tek-yönlü yolculuk yapabilirdin.`
       },
     ],
   },
@@ -75,17 +93,45 @@ var calculations = [
     return format(times);
   },
   function(days, percent, format) {
-    var hkParisDays = 10000 / 120;
+    var divDays = 10000 / 60; // 12 hours * 5 km/h
 
-    if (days < hkParisDays) {
+    if (days < divDays) {
       return;
     }
 
-    var times = (days / hkParisDays).toFixed(2) * 1;
+    var times = (days / divDays).toFixed(2) * 1;
     return format(times);
   },
   function(days, percent, format) {
     return format(days * 5);
+  },
+  function(days, percent, format) {
+    if (days < 93) {
+      return;
+    }
+
+    var times = (days / 93).toFixed(2) * 1;
+    return format(times);
+  },
+  function(days, percent, format) {
+    var divDays = 26000 / 60;
+
+    if (days < divDays) {
+      return;
+    }
+
+    var times = (days / divDays).toFixed(2) * 1;
+    return format(times);
+  },
+  function(days, percent, format) {
+    var divDays = 270;
+
+    if (days < divDays / 2) {
+      return;
+    }
+
+    var times = (days / divDays).toFixed(2) * 1;
+    return format(times);
   },
 ];
 
