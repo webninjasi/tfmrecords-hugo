@@ -1,6 +1,5 @@
 ---
 title: "Time"
-bookhidden: true
 icon: "https://res.cloudinary.com/wnc/image/upload/v1651746577/time.webp"
 ---
 

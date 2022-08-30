@@ -18,7 +18,7 @@
 <input id="time_age" name="time_age" type="number" placeholder="Your age" value="" min="1" max="200" />
 <br />
 <label for="time_text">/time:</label>
-<input id="time_text" name="time_text" type="text" placeholder="Output of /time command from the game" />
+<input id="time_text" name="time_text" type="text" placeholder="Output of /time command in the game" />
 
 <div id="time_result"></div>
 
@@ -149,7 +149,7 @@ elmAge.onchange = function() {
 }
 
 elmText.onchange = function() {
-  var m = elmText.value.trim().match(/(\d+)(?: (\S+?)(?:,|$))?/);
+  var m = elmText.value.trim().match(/(?:^|\s)(\d+)(?: (\S+?)(?:,|$))?/);
 
   days = 0;
 
