@@ -1,13 +1,36 @@
-{{ if and (and (eq .Kind "page") .Params.categories) (ne "0" .File.BaseFileName) }}
-    {{ with $map := index $.Site.Data.maps .File.BaseFileName }}
+{{ if and (and (eq $.ctx.Kind "page") $.ctx.Params.categories) (ne "0" $.ctx.File.BaseFileName) }}
+    {{ with $map := index $.ctx.Site.Data.maps $.ctx.File.BaseFileName }}
     <div class="markdown book-post small-map">
-        <a href="{{ $.RelPermalink }}">
+        <span>
+            {{ if not $.author }}
+            {{ $author := index $.ctx.Site.Data.authors (or $map.author "Unknown") }}
+            {{ if $author }}
+            Author:
+            <a href="/authors/{{ $author.url }}/">
+                {{ $author.name }}
+            </a>
+            {{ end }}
+            {{ end }}
+
+            {{ if not $.cat }}
+            {{ $cat := index $.ctx.Site.Data.categories (lower $map.category) }}
+            {{ $caturl := (replace (lower $map.category) "-" "/") }}
+            Category:
+            {{ if $cat }}
+            <a href="/categories/{{ $caturl }}">{{ $cat.fullTitle }}</a>
+            {{ else }}
+            {{ $map.category }}
+            {{ end }}
+            {{ end }}
+        </span>
+
+        <a href="{{ $.ctx.RelPermalink }}">
             <img class="map-img" src="{{ $map.img }}">
         </a>
 
         <div class="map-body">
             <h2 class="map-title">
-                <a href="{{ $.RelPermalink }}">@{{ $.File.BaseFileName }}</a>
+                <a href="{{ $.ctx.RelPermalink }}">@{{ $.ctx.File.BaseFileName }}</a>
             </h2>
 
             {{ if eq $map.category "parkour" }}

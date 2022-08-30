@@ -1,6 +1,7 @@
 {{ define "main" }}
   {{ $name := (replace (lower .Title) "/" "-") }}
   {{ $cat := index $.Site.Data.categories $name }}
+  {{ $author := index $.Site.Data.authors $name }}
   {{ if $cat }}
     <h1>
       <img class="category-icon" src="{{ $cat.icon }}" />
@@ -9,7 +10,6 @@
   {{ else }}
     {{ if eq .Data.Singular "author" }}
 
-    {{ $author := index $.Site.Data.authors $name }}
     {{ if $author }}
     <h1>{{ $author.name }} <sup>{{ len .Pages }}</sup></h1>
     {{ if $author.player }}
@@ -35,7 +35,7 @@
 
   <div class="maps-list">
     {{ range (.Paginate (sort .Pages "Params.mapid" "asc")).Pages }}
-      {{ partial "small-map" . }}
+      {{ partial "small-map" (dict "ctx" . "cat" $cat "author" $author) }}
     {{ end }}
   </div>
 
