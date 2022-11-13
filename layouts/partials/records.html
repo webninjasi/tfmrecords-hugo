@@ -18,7 +18,7 @@
         {{ $player := index site.Data.players $rec.name }}
         <td><a href="/players/{{ $player.url }}/">{{ $player.name }}</a></td>
         {{ if hasPrefix $rec.link "http" }}
-        <td><a href="{{ $rec.link }}" rel="noreferrer" target="_blank">{{ printf "%.2f" (div $rec.time 100) }}</a></td>
+        <td><a href="{{ $rec.link }}" rel="noreferrer" target="_blank"{{ if or (in $rec.link "youtube.") (in $rec.link "youtu.be") }} class="rec-video-link"{{ end }}>{{ printf "%.2f" (div $rec.time 100) }}</a></td>
         {{ else }}
         <td>{{ printf "%.2f" (div $rec.time 100) }}</td>
         {{ end }}
