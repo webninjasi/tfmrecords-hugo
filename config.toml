@@ -1,4 +1,4 @@
-baseURL = "https://tfmrecords.tk/" # "http://localhost:8080/"
+baseURL = "https://tfmrecords.com/" # "http://localhost:8080/"
 languageCode = "en-us"
 title = "TFM Records"
 theme = "records"
