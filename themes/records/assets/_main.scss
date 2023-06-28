@@ -303,7 +303,7 @@ aside nav,
 .markdown {
   transition: 0.2s ease-in-out;
   transition-property: transform, margin, opacity, visibility;
-  will-change: transform, margin, opacity;
+  /*will-change: transform, margin, opacity;*/
 }
 
 @media screen and (max-width: $mobile-breakpoint) {
