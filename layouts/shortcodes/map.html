@@ -3,7 +3,7 @@
     {{ $field1 := "Records" }}
     {{ $field2 := "Reversed" }}
 
-    {{ if eq $map.category "parkour" }}
+    {{ if or (eq $map.category "parkour") (eq $map.category "brokenpk") }}
         {{ $field1 = "New Checkpoint" }}
         {{ $field2 = "Old Checkpoint" }}
     {{ end }}
@@ -29,7 +29,7 @@
     <div class="map-records">
         <div class="map-record">
             <h2>{{ $field1 }}</h2>
-            {{ if eq $map.category "parkour" }}
+            {{ if or (eq $map.category "parkour") (eq $map.category "brokenpk") }}
                 {{ partial "records" $map.recordsReversed }}
             {{ else }}
                 {{ partial "records" $map.records }}
@@ -38,7 +38,7 @@
 
         <div class="map-record">
             <h2>{{ $field2 }}</h2>
-            {{ if eq $map.category "parkour" }}
+            {{ if or (eq $map.category "parkour") (eq $map.category "brokenpk") }}
                 {{ partial "records" $map.records }}
             {{ else }}
                 {{ partial "records" $map.recordsReversed }}
