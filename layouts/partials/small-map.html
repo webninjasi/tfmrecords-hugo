@@ -33,7 +33,7 @@
                 <a href="{{ $.ctx.RelPermalink }}">@{{ $.ctx.File.BaseFileName }}</a>
             </h2>
 
-            {{ if eq $map.category "parkour" }}
+            {{ if or (eq $map.category "parkour") (eq $map.category "brokenpk") }}
                 {{ partial "records" $map.recordsReversed }}
             {{ else }}
                 {{ partial "records" $map.records }}
