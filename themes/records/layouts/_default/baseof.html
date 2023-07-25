@@ -4,6 +4,7 @@
 <head>
   {{ partial "docs/html-head" . }}
   {{ partial "docs/inject/head" . }}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6849324531484948" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -18,14 +19,25 @@
         {{ template "header" . }} <!-- Mobile layout header -->
       </header>
 
+      <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6849324531484948"
+         data-ad-slot="4764411634"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
       {{ partial "docs/inject/content-before" . }}
       {{ template "main" . }} <!-- Page Content -->
       {{ partial "docs/inject/content-after" . }}
+      <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6849324531484948"
+         data-ad-slot="4764411634"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
 
       <footer class="book-footer">
         {{ template "footer" . }} <!-- Footer under page content -->
         {{ partial "docs/inject/footer" . }}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6849324531484948" crossorigin="anonymous"></script>
       </footer>
 
       {{ template "comments" . }} <!-- Comments block -->
@@ -41,6 +53,9 @@
   </main>
 
   {{ partial "docs/inject/body" . }}
+  <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </body>
 
 </html>
