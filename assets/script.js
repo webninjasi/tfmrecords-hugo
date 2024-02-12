@@ -136,6 +136,7 @@ $(function() {
     });
 
     if (window.localStorage) {
+        /*
         if (window.localStorage.getItem('useProxy')) {
             $('.map-img').each(function () {
                 if (this.src.indexOf('discord') != -1)
@@ -147,6 +148,7 @@ $(function() {
                 this.src = 'https://images-docs-opensocial.googleusercontent.com/gadgets/proxy?url=' + encodeURIComponent(this.originalSrc) + '&container=docs&gadget=a&rewriteMime=image%2F*&refresh=86400';
             });
         }
+        */
 
         var toggles = window.localStorage.getItem('toggles');
 
