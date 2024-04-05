@@ -25,7 +25,7 @@ const tagify = (name) => name.includes('#') ? name : name + '#0000';
 const mousize = (name) => tagify(capitalize(name));
 
 function fixDiscordURL(url) {
-    return '//' + url.replace(/\?.+$/m, '').replace('.discordapp.com', '.discordapp.xyz').replace(/^https?:\/\//mi, '');
+    return 'https://' + url.replace(/\?.+$/m, '').replace('.discordapp.com', '.discordapp.xyz').replace(/^https?:\/\//mi, '');
 }
 
 function fixRecordProofs(recs) {
