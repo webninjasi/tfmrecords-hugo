@@ -28,6 +28,16 @@ function fixDiscordURL(url) {
     return '//wsrv.nl/?url=' + encodeURIComponent(url.replace(/\?.+$/m, '').replace('.discordapp.com', '.discordapp.xyz').replace(/^https?:\/\//mi, ''));
 }
 
+function fixRecordProofs(recs) {
+    if (!recs) return;
+    
+    for (var i=0; i<recs.length; i++) {
+        if (recs[i]?.proof?.indexOf('discord') != -1) {
+            recs[i].proof = fixDiscordURL(recs[i].proof);
+        }
+    }
+}
+
 (function()
 {
     let mapId, content, map, dataFilePath, contentFilePath;
@@ -131,20 +141,8 @@ function fixDiscordURL(url) {
         // Update image url
         if (map.img.indexOf('discord') != -1) {
             map.img = fixDiscordURL(map.img);
-
-            var recs;
-            recs = map.records;
-            for (var i=0; i<recs.length; i++) {
-                if (recs[i]?.proof?.indexOf('discord') != -1) {
-                    recs[i].proof = fixDiscordURL(recs[i].proof);
-                }
-            }
-            recs = map.recordsReversed;
-            for (var i=0; i<recs.length; i++) {
-                if (recs[i]?.proof?.indexOf('discord') != -1) {
-                    recs[i].proof = fixDiscordURL(recs[i].proof);
-                }
-            }
+            fixRecordProofs(map.records);
+            fixRecordProofs(map.recordsReversed);
     
             // Save map data file
             fs.writeFileSync(dataFilePath, JSON.stringify(map));
