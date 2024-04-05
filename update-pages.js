@@ -33,8 +33,8 @@ function fixRecordProofs(recs) {
     var changes = false;
     
     for (var i=0; i<recs.length; i++) {
-        if (recs[i]?.proof && recs[i]?.proof.indexOf('discord') != -1) {
-            recs[i].proof = fixDiscordURL(recs[i].proof);
+        if (recs[i]?.link && recs[i]?.link.indexOf('discord') != -1) {
+            recs[i].link = fixDiscordURL(recs[i].link);
             changes = true;
         }
     }
