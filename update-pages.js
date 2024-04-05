@@ -30,12 +30,16 @@ function fixDiscordURL(url) {
 
 function fixRecordProofs(recs) {
     if (!recs) return;
+    var changes = false;
     
     for (var i=0; i<recs.length; i++) {
-        if (recs[i]?.proof?.indexOf('discord') != -1) {
+        if (recs[i]?.proof && recs[i]?.proof.indexOf('discord') != -1) {
             recs[i].proof = fixDiscordURL(recs[i].proof);
+            changes = true;
         }
     }
+
+    return changes;
 }
 
 (function()
@@ -138,13 +142,20 @@ function fixRecordProofs(recs) {
             continue;
         }
 
+        var changes = false;
+
         // Update image url
         if (map.img.indexOf('discord') != -1) {
             map.img = fixDiscordURL(map.img);
-            fixRecordProofs(map.records);
-            fixRecordProofs(map.recordsReversed);
-    
-            // Save map data file
+            changes = true;
+        }
+
+        // Fix record proofs
+        changes = fixRecordProofs(map.records) || changes;
+        changes = fixRecordProofs(map.recordsReversed) || changes;
+
+        // Save map data file if theres any change
+        if (changes) {
             fs.writeFileSync(dataFilePath, JSON.stringify(map));
         }
 
