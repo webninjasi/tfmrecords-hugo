@@ -24,6 +24,10 @@ const capitalize = (name) => name.replace(/^[^a-z]*[a-z]/mi, toUpperCase);
 const tagify = (name) => name.includes('#') ? name : name + '#0000';
 const mousize = (name) => tagify(capitalize(name));
 
+function fixDiscordURL(url) {
+    return '//wsrv.nl/?url=' + encodeURIComponent(url.replace(/\?.+$/m, '').replace('.discordapp.com', '.discordapp.xyz').replace(/^https?:\/\//mi, ''));
+}
+
 (function()
 {
     let mapId, content, map, dataFilePath, contentFilePath;
@@ -122,6 +126,28 @@ const mousize = (name) => tagify(capitalize(name));
         if (!map)
         {
             continue;
+        }
+
+        // Update image url
+        if (map.img.indexOf('discord') != -1) {
+            map.img = fixDiscordURL(map.img);
+
+            var recs;
+            recs = map.records;
+            for (var i=0; i<recs.length; i++) {
+                if (recs[i]?.proof?.indexOf('discord') != -1) {
+                    recs[i].proof = fixDiscordURL(recs[i].proof);
+                }
+            }
+            recs = map.recordsReversed;
+            for (var i=0; i<recs.length; i++) {
+                if (recs[i]?.proof?.indexOf('discord') != -1) {
+                    recs[i].proof = fixDiscordURL(recs[i].proof);
+                }
+            }
+    
+            // Save map data file
+            fs.writeFileSync(dataFilePath, JSON.stringify(map));
         }
 
         // Add map to author's collection
