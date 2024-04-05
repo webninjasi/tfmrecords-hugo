@@ -4,7 +4,6 @@
 <head>
   {{ partial "docs/html-head" . }}
   {{ partial "docs/inject/head" . }}
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6849324531484948" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,20 +19,8 @@
       </header>
 
       {{ partial "docs/inject/content-before" . }}
-      <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-6849324531484948"
-         data-ad-slot="4764411634"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
       {{ template "main" . }} <!-- Page Content -->
       {{ partial "docs/inject/content-after" . }}
-      <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-6849324531484948"
-         data-ad-slot="8638926089"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
 
       <footer class="book-footer">
         {{ template "footer" . }} <!-- Footer under page content -->
