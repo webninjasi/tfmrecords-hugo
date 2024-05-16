@@ -10,10 +10,4 @@ You can submit your records from our discord server.
 
 {{< discord >}}
 
-## Parkour
-
-You can now submit your parkour records in a records enabled #parkour room (e.g. "**/room \*#parkour0records YourName#0000**")
-
-Use in-game **!submit** command to send your records to us.
-
 {{< button href="/categories/parkour/" >}}View Parkour Maps{{< /button >}}
