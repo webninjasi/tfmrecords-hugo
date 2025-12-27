@@ -1,4 +1,4 @@
-baseURL = "https://tfmrecords.wnc.workers.dev/" # "http://localhost:8080/"
+baseURL = "https://tfmrecords.github.io/" # "http://localhost:8080/"
 languageCode = "en-us"
 title = "TFM Records"
 theme = "records"
