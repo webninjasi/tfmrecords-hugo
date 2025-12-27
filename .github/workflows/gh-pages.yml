@@ -24,7 +24,7 @@ jobs:
       - name: Checkout Hugo Data
         uses: actions/checkout@v6
         with:
-          repository: https://github.com/TFMRecords/json-data
+          repository: TFMRecords/json-data
           path: ./data/
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
