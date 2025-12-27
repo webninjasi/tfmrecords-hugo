@@ -1,0 +1,927 @@
+<!doctype html><html lang=en data-theme=dark>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="TFM Records">
+<meta name=theme-color content="#FFFFFF"><meta property="og:title" content="parkour">
+<meta property="og:description" content="TFM Records">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tfmrecords.wnc.workers.dev/categories/parkour/">
+<title>Parkour | TFM Records</title><link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.c391bfec3d3a2fd24a20a377a364b01ec8d9dfc4e30e1708ec406681269d629a.css integrity="sha256-w5G/7D06L9JKIKN3o2SwHsjZ38TjDhcI7EBmgSadYpo="><link rel=alternate type=application/rss+xml href=https://tfmrecords.wnc.workers.dev/categories/parkour/index.xml title="TFM Records">
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js integrity="sha256-C66CaAImteEKZPYvgng9j10J/45e9sAuZyfPYCwp4gE=" crossorigin=anonymous></script>
+<script defer src=/en.script.data.min.e5c3b2fd3a709dc17d30bac77372b657cc87256b00dfe8300aac47e86a8422eb.js integrity="sha256-5cOy/TpwncF9MLrHc3K2V8yHJWsA3+gwCqxH6GqEIus="></script>
+<script defer src=/en.script.min.28bd4383052cc3104b8ed194840c1d53b566d932c0babd75db3ec4c88141baf9.js integrity="sha256-KL1DgwUswxBLjtGUhAwdU7Vm2TLAur112z7EyIFBuvk="></script>
+<link rel=stylesheet type=text/css href=https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css>
+</head><body>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<main class="container flex">
+<aside class=book-menu>
+<nav>
+<h2 class=book-brand>
+<a href=/><img src=/logo.png alt=Logo><span>TFM Records</span>
+</a>
+</h2><div class=book-search>
+<span class=book-search-holder>Search <span class=book-search-subholder>@123456 / Player#1234</span></span>
+<input type=text id=book-search-input aria-label=Search maxlength=64>
+<ul id=book-search-results></ul></div><ul>
+<li>
+<a href=/leaderboard/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/mckeydown/image/upload/v1589064100/FB7m361.png)></i>
+Leaderboard</a>
+</li><li>
+<a href=/sanctions/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/mckeydown/image/upload/v1599511701/bl.png)></i>
+Sanctions</a>
+</li><li>
+<a href=/time/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1651746577/time.webp)></i>
+Time</a>
+</li><li>
+<a href=https://discord.gg/w23Gz9f style=color:#5865f2>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1647547953/discord.png)></i>
+Join Discord
+</a>
+</li></ul><br>
+<ul>
+<li>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059682/8DSp8pD.png)></i>
+Bootcamp
+<i class="menu-toggle arrow right" id=menu_toggle_bootcamp></i>
+<ul class=menu-children>
+<li>
+<a href=/categories/gbc/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1619102068/gbc2.png);height:30px></i>
+Godly Bootcamp
+<sup>91</sup>
+</a>
+</li><li>
+<a href=/categories/p13/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1620242301/P13.png)></i>
+P13
+<sup>658</sup>
+</a>
+</li><li>
+<a href=/categories/p3/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059682/8DSp8pD.png)></i>
+P3
+<sup>310</sup>
+</a>
+</li><li>
+<a href=/categories/rbc/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1599908548/rbc.png)></i>
+Retro Bootcamp
+<sup>1166</sup>
+</a>
+</li></ul></li><li>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059707/Ua3Ct4O.png)></i>
+Custom
+<i class="menu-toggle arrow right" id=menu_toggle_custom></i>
+<ul class=menu-children>
+<li>
+<a href=/categories/cj/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1599938240/buz.png)></i>
+Corner Jump
+<sup>20</sup>
+</a>
+</li><li>
+<a href=/categories/size/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1620305748/size.png)></i>
+Size Maps
+<sup>67</sup>
+</a>
+</li><li>
+<a href=/categories/special/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059707/Ua3Ct4O.png)></i>
+Special Codes
+<sup>114</sup>
+</a>
+</li><li>
+<a href=/categories/ta/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1619422385/ta.png)></i>
+Turn Around
+<sup>67</sup>
+</a>
+</li><li>
+<a href=/categories/usermaps/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059707/Ua3Ct4O.png)></i>
+User Maps
+<sup>511</sup>
+</a>
+</li><li>
+<a href=/categories/wj/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1619422688/walljump.png)></i>
+Wall Jump
+<sup>140</sup>
+</a>
+</li></ul></li><li>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/c_scale,w_100/v1601765684/Ressort_HD.png)></i>
+Edited
+<i class="menu-toggle arrow right" id=menu_toggle_edited></i>
+<ul class=menu-children>
+<li>
+<a href=/categories/edited/bc/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059682/8DSp8pD.png)></i>
+Bootcamp
+<sup>352</sup>
+</a>
+</li><li>
+<a href=/categories/edited/custom/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059707/Ua3Ct4O.png)></i>
+Custom
+<sup>10</sup>
+</a>
+</li><li>
+<a href=/categories/edited/events/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1600813535/p1.png)></i>
+Events
+<sup>36</sup>
+</a>
+</li><li>
+<a href=/categories/edited/misc/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059734/suSDJf3.png)></i>
+Miscellaneous
+<sup>115</sup>
+</a>
+</li><li>
+<a href=/categories/edited/modules/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1600813535/p1.png)></i>
+Modules
+<sup>17</sup>
+</a>
+</li><li>
+<a href=/categories/edited/p1/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1600813535/p1.png)></i>
+P1
+<sup>6</sup>
+</a>
+</li><li>
+<a href=/categories/edited/p4/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1599935287/shaman.png)></i>
+Shaman
+<sup>31</sup>
+</a>
+</li><li>
+<a href=/categories/edited/p5/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059713/vb0RJEk.png)></i>
+P5
+<sup>15</sup>
+</a>
+</li><li>
+<a href=/categories/edited/p6/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059720/IdHMsFf.png)></i>
+P6
+<sup>17</sup>
+</a>
+</li><li>
+<a href=/categories/edited/rc/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059700/AQvJAQe.png)></i>
+Racing
+<sup>715</sup>
+</a>
+</li><li>
+<a href=/categories/edited/survivor/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1600813535/p1.png)></i>
+Survivor
+<sup>44</sup>
+</a>
+</li><li>
+<a href=/categories/edited/vanilla/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059764/XoiknCk.png)></i>
+Vanilla
+<sup>191</sup>
+</a>
+</li></ul></li><li>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1620242566/P41.png)></i>
+Modules
+<i class="menu-toggle arrow right" id=menu_toggle_modules></i>
+<ul class=menu-children>
+<li>
+<a href=/categories/hardcamp/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059682/8DSp8pD.png)></i>
+Hardcamp
+<sup>459</sup>
+</a>
+</li><li>
+<a href=/categories/lavarun/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1600548628/Lava.png)></i>
+Lavarun
+<sup>29</sup>
+</a>
+</li><li>
+<a href=/categories/p41/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1620242566/P41.png)></i>
+Vanilla Camp
+<sup>517</sup>
+</a>
+</li><li>
+<a href=/categories/retrohc/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059682/8DSp8pD.png)></i>
+Retro Hardcamp
+<sup>179</sup>
+</a>
+</li><li>
+<a href=/categories/signal/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1599937650/signal.png)></i>
+Signal
+<sup>57</sup>
+</a>
+</li></ul></li><li>
+<a href=/categories/p1/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1600813535/p1.png)></i>
+P1
+<sup>4963</sup>
+</a>
+</li><li>
+<a href=/categories/p18/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059742/xq9oX2d.png)></i>
+P18
+<sup>265</sup>
+</a>
+</li><li>
+<a href=/categories/p19/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059752/OwF5SjE.png)></i>
+P19
+<sup>231</sup>
+</a>
+</li><li>
+<a href=/categories/p22/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059707/Ua3Ct4O.png)></i>
+P22
+<sup>101</sup>
+</a>
+</li><li>
+<a href=/categories/p5/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059713/vb0RJEk.png)></i>
+P5
+<sup>1180</sup>
+</a>
+</li><li>
+<a href=/categories/p6/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059720/IdHMsFf.png)></i>
+P6
+<sup>571</sup>
+</a>
+</li><li>
+<a href=/categories/p9/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059734/suSDJf3.png)></i>
+P9
+<sup>625</sup>
+</a>
+</li><li>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1620242764/parkour.png)></i>
+Parkour
+<i class="menu-toggle arrow right" id=menu_toggle_parkourgroup></i>
+<ul class=menu-children>
+<li>
+<a href=/categories/brokenpk/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/mckeydown/image/upload/v1599511701/bl.png)></i>
+Broken Parkour
+<sup>42</sup>
+</a>
+</li><li>
+<a href=/categories/custompk/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1651337025/customparkour.png)></i>
+Custom Parkour
+<sup>143</sup>
+</a>
+</li><li>
+<a href=/categories/parkour/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1620242764/parkour.png)></i>
+Parkour
+<sup>440</sup>
+</a>
+</li></ul></li><li>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059700/AQvJAQe.png)></i>
+Racing
+<i class="menu-toggle arrow right" id=menu_toggle_racing></i>
+<ul class=menu-children>
+<li>
+<a href=/categories/grc/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1619794552/bandeiraefoice.png)></i>
+Godly Racing
+<sup>13</sup>
+</a>
+</li><li>
+<a href=/categories/p17/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059700/AQvJAQe.png)></i>
+P17
+<sup>1634</sup>
+</a>
+</li><li>
+<a href=/categories/p7/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059692/7iVcOJ3.png)></i>
+P7
+<sup>1107</sup>
+</a>
+</li><li>
+<a href=/categories/rrc/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1599908548/rrc.png)></i>
+Retro Racing
+<sup>1368</sup>
+</a>
+</li></ul></li><li>
+<a href=/categories/shaman/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1599935287/shaman.png)></i>
+Shaman
+<sup>11</sup>
+</a>
+</li><li>
+<a href=/categories/vanilla/>
+<i class=menu-icon style=background-image:url(https://res.cloudinary.com/wnc/image/upload/v1538059764/XoiknCk.png)></i>
+Vanilla
+<sup>144</sup>
+</a>
+</li></ul></nav><script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</aside><div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Parkour</strong>
+<div class=theme-switch-wrapper>
+<label class=theme-switch for=checkbox>
+<input type=checkbox id=checkbox checked>
+<div class="slider round"></div></label>
+<em>Dark Mode</em>
+</div></div></header><div class="theme-switch-wrapper theme-switch-wrapper-fs">
+<label class=theme-switch for=checkbox>
+<input type=checkbox id=checkbox checked>
+<div class="slider round"></div></label>
+<em>Dark Mode</em>
+</div><h1>
+<img class=category-icon src=https://res.cloudinary.com/wnc/image/upload/v1620242764/parkour.png>
+Parkour <sup>440</sup>
+</h1><p class=map-notes>You can only submit your records in a records enabled <b>#parkour</b> room (e.g. <b>"/room *#parkour0records YourName#0000"</b>).<br>Use in-game <b>!submit</b> command to send your records to us.<br><small>P.S. You can use <b>!setcp 1</b> command to use the old checkpoints and <b>!setcp 2</b> command to use new checkpoints.</small></p><ul class=pagination>
+<li class=page-item>
+<a href=/categories/parkour/ class=page-link aria-label=First><span aria-hidden=true>&#171;&#171;</span></a>
+</li><li class="page-item disabled">
+<a class=page-link aria-label=Previous><span aria-hidden=true>&#171;</span></a>
+</li><li class="page-item active">
+<a class=page-link href=/categories/parkour/>1</a>
+</li><li class=page-item>
+<a class=page-link href=/categories/parkour/page/2/>2</a>
+</li><li class=page-item>
+<a class=page-link href=/categories/parkour/page/3/>3</a>
+</li><li class="page-item disabled">
+<span aria-hidden=true>&nbsp;&mldr;&nbsp;</span>
+</li><li class=page-item>
+<a class=page-link href=/categories/parkour/page/19/>19</a>
+</li><li class=page-item>
+<a href=/categories/parkour/page/2/ class=page-link aria-label=Next><span aria-hidden=true>&#187;</span></a>
+</li><li class=page-item>
+<a href=/categories/parkour/page/19/ class=page-link aria-label=Last><span aria-hidden=true>&#187;&#187;</span></a>
+</li><select class=pagination-list><option value=1 selected>1</option><option value=2>2</option><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option><option value=16>16</option><option value=17>17</option><option value=18>18</option><option value=19>19</option></select>
+</ul><div class=maps-list>
+<div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/lezkip-0000/>
+Lezkip#0000
+</a>
+</span>
+<a href=/maps/4612890/>
+<img class=map-img src=https://imgur.com/wtHQ33T.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/4612890/>@4612890</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1050082001992036422/wr_4612890_44.773.png rel=noreferrer target=_blank>44.77</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/kaanov-9473/>Kaanov#9473</a></td><td>45.23</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/inutilmono-0000/>Inutilmono#0000</a></td><td>45.78</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/xcdzj-0000/>Xcdzj#0000</a></td><td>46.39</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/cia-8786/>Cia#8786</a></td><td>51.26</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/lezkip-0000/>
+Lezkip#0000
+</a>
+</span>
+<a href=/maps/4746775/>
+<img class=map-img src=https://imgur.com/L5BfEV0.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/4746775/>@4746775</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1125544241171529768/4746775_31203.png rel=noreferrer target=_blank>31.20</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/zmiji-0000/>Zmiji#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1115469664747794532/image.png rel=noreferrer target=_blank>31.73</a></td></tr><tr>
+<td scope=row>3</td><td><a href=/players/killize-0000/>Killize#0000</a></td><td>32.47</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/l3v3_spank-8748/>L3v3_spank#8748</a></td><td>32.51</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/kaanov-9473/>Kaanov#9473</a></td><td>33.17</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/lezkip-0000/>
+Lezkip#0000
+</a>
+</span>
+<a href=/maps/5027504/>
+<img class=map-img src=https://imgur.com/EFfNBLc.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/5027504/>@5027504</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1134201819946561636/5027504_42787.png rel=noreferrer target=_blank>42.78</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/vlatkito-0000/>Vlatkito#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1133809347739254874/image.png rel=noreferrer target=_blank>43.52</a></td></tr><tr>
+<td scope=row>3</td><td><a href=/players/astonix-0000/>Astonix#0000</a></td><td>44.51</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/kittemice-0000/>Kittemice#0000</a></td><td>46.30</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/omenox-0000/>Omenox#0000</a></td><td>47.45</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/uhuge-0000/>
+Uhuge#0000
+</a>
+</span>
+<a href=/maps/5615419/>
+<img class=map-img src=https://imgur.com/yWTemhQ.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/5615419/>@5615419</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/709224606615207937/1143121259450859520/5615419_58.447.mp4 rel=noreferrer target=_blank class=rec-video-link>58.44</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/uil-7666/>Uil#7666</a></td><td>61.70</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/pwe-1871/>Pwe#1871</a></td><td>67.64</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/marion-4062/>Marion#4062</a></td><td>68.27</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/totorgaga-0000/>Totorgaga#0000</a></td><td>71.71</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/uhuge-0000/>
+Uhuge#0000
+</a>
+</span>
+<a href=/maps/5674149/>
+<img class=map-img src=https://imgur.com/RbN40r1.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/5674149/>@5674149</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/709224606615207937/1140381420720762920/Transformice_2023-08-13_16-26-29_Trim.mp4 rel=noreferrer target=_blank class=rec-video-link>57.51</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/quki-0000/>Quki#0000</a></td><td>58.34</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/kaanov-9473/>Kaanov#9473</a></td><td>59.00</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/skypierr-7567/>Skypierr#7567</a></td><td>59.91</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/sourissamp-1415/>Sourissamp#1415</a></td><td>62.70</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/uhuge-0000/>
+Uhuge#0000
+</a>
+</span>
+<a href=/maps/5889600/>
+<img class=map-img src=https://imgur.com/Keq9o3a.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/5889600/>@5889600</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/709224606615207937/1140382122973085847/Transformice_2023-08-13_12-08-11_Trim.mp4 rel=noreferrer target=_blank class=rec-video-link>41.58</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/killize-0000/>Killize#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/709224606615207937/1009129705393360926/wr_map.mp4 rel=noreferrer target=_blank class=rec-video-link>41.91</a></td></tr><tr>
+<td scope=row>3</td><td><a href=/players/kitagawa-5813/>Kitagawa#5813</a></td><td>42.20</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/elmattjuan-0000/>Elmattjuan#0000</a></td><td>42.27</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/mquk-0095/>Mquk#0095</a></td><td>43.74</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/uhuge-0000/>
+Uhuge#0000
+</a>
+</span>
+<a href=/maps/5923777/>
+<img class=map-img src=https://cdn.discordapp.xyz/attachments/816071510645145630/1276343500513742890/file.jpg>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/5923777/>@5923777</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+</tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/uhuge-0000/>
+Uhuge#0000
+</a>
+</span>
+<a href=/maps/5965494/>
+<img class=map-img src=https://imgur.com/ztxNqPB.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/5965494/>@5965494</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1143575655708106882/5965494_53167.png rel=noreferrer target=_blank>53.16</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/ligthjj-0000/>Ligthjj#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1089682354571849748/Captura_de_pantalla_927.png rel=noreferrer target=_blank>53.92</a></td></tr><tr>
+<td scope=row>3</td><td><a href=/players/kaanov-9473/>Kaanov#9473</a></td><td>54.15</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/zed-6594/>Zed#6594</a></td><td>57.04</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/sourissamp-1415/>Sourissamp#1415</a></td><td>58.10</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/quaree_x-7132/>
+Quaree_x#7132
+</a>
+</span>
+<a href=/maps/6108521/>
+<img class=map-img src=https://imgur.com/L3a77Ft.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6108521/>@6108521</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1146473975673790565/6108521_43698.png rel=noreferrer target=_blank>43.69</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/r0aue-0000/>R0aue#0000</a></td><td>44.15</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/dieviet-0000/>Dieviet#0000</a></td><td>45.59</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/ledgiic-0000/>Ledgiic#0000</a></td><td>47.42</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/krychassl-0000/>Krychassl#0000</a></td><td>48.25</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/quaree_x-7132/>
+Quaree_x#7132
+</a>
+</span>
+<a href=/maps/6108646/>
+<img class=map-img src=https://imgur.com/Xmz8UQm.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6108646/>@6108646</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1146473934880002078/6108646_58013.png rel=noreferrer target=_blank>58.01</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/astonix-0000/>Astonix#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1115464639795441794/image.png rel=noreferrer target=_blank>61.65</a></td></tr><tr>
+<td scope=row>3</td><td><a href=/players/doug10-9275/>Doug10#9275</a></td><td>65.17</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/thefourthone-0000/>Thefourthone#0000</a></td><td>66.40</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/ledgiic-0000/>Ledgiic#0000</a></td><td>68.46</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/vincentfarm-0000/>
+Vincentfarm#0000
+</a>
+</span>
+<a href=/maps/6110576/>
+<img class=map-img src=https://cdn.discordapp.xyz/attachments/816071510645145630/1153189191476330576/file.jpg>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6110576/>@6110576</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+</tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/quaree_x-7132/>
+Quaree_x#7132
+</a>
+</span>
+<a href=/maps/6151153/>
+<img class=map-img src=https://imgur.com/jm7vO4V.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6151153/>@6151153</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/nyucry-5903/>Nyucry#5903</a></td><td>51.81</td></tr><tr>
+<td scope=row>2</td><td><a href=/players/canibelles-0000/>Canibelles#0000</a></td><td>54.24</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/krawk-5362/>Krawk#5362</a></td><td>54.60</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/angie-6953/>Angie#6953</a></td><td>56.71</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/ledgiic-0000/>Ledgiic#0000</a></td><td>58.70</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/quaree_x-7132/>
+Quaree_x#7132
+</a>
+</span>
+<a href=/maps/6163393/>
+<img class=map-img src=https://imgur.com/LjG7pkj.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6163393/>@6163393</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/709224606615207937/1143503049961246740/Transformice_2023-08-22_12-22-54_Trim.mp4 rel=noreferrer target=_blank class=rec-video-link>45.72</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/canibelles-0000/>Canibelles#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1054543944991658084/quaree47.1.png rel=noreferrer target=_blank>47.10</a></td></tr><tr>
+<td scope=row>3</td><td><a href=/players/qyi-1076/>Qyi#1076</a></td><td>47.58</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/xcdzj-0000/>Xcdzj#0000</a></td><td>48.88</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/d8_simekson-3622/>D8_simekson#3622</a></td><td>51.61</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/quaree_x-7132/>
+Quaree_x#7132
+</a>
+</span>
+<a href=/maps/6174675/>
+<img class=map-img src=https://imgur.com/GIYl73z.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6174675/>@6174675</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/doger-4805/>Doger#4805</a></td><td>53.91</td></tr><tr>
+<td scope=row>2</td><td><a href=/players/krawk-5362/>Krawk#5362</a></td><td>54.84</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/doug10-9275/>Doug10#9275</a></td><td>61.42</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/moofie-0000/>Moofie#0000</a></td><td>62.95</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/xxlemasterxx-0000/>Xxlemasterxx#0000</a></td><td>63.89</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/uhuge-0000/>
+Uhuge#0000
+</a>
+</span>
+<a href=/maps/6180642/>
+<img class=map-img src=https://imgur.com/BrSDTF2.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6180642/>@6180642</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/nyucry-5903/>Nyucry#5903</a></td><td>47.47</td></tr><tr>
+<td scope=row>2</td><td><a href=/players/ejsner-8749/>Ejsner#8749</a></td><td>48.29</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/kess_d-0984/>Kess_d#0984</a></td><td>49.90</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/ware-0625/>Ware#0625</a></td><td>52.93</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/ledgiic-0000/>Ledgiic#0000</a></td><td>54.77</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/quaree_x-7132/>
+Quaree_x#7132
+</a>
+</span>
+<a href=/maps/6194607/>
+<img class=map-img src=https://imgur.com/tZ7aWdX.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6194607/>@6194607</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/nyucry-5903/>Nyucry#5903</a></td><td>44.32</td></tr><tr>
+<td scope=row>2</td><td><a href=/players/ledgiic-0000/>Ledgiic#0000</a></td><td>48.84</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/omenox-0000/>Omenox#0000</a></td><td>48.90</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/krychassl-0000/>Krychassl#0000</a></td><td>49.26</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/ahmed11-1015/>Ahmed11#1015</a></td><td>49.57</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/quaree_x-7132/>
+Quaree_x#7132
+</a>
+</span>
+<a href=/maps/6210970/>
+<img class=map-img src=https://imgur.com/SYtiY8F.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6210970/>@6210970</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/canibelles-0000/>Canibelles#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1054543006730043443/44.6.png rel=noreferrer target=_blank>44.60</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/kaanov-9473/>Kaanov#9473</a></td><td>44.88</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/quki-0000/>Quki#0000</a></td><td>45.61</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/skypierr-7567/>Skypierr#7567</a></td><td>45.75</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/ichda_the_king-1942/>Ichda_the_king#1942</a></td><td>46.48</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/uhuge-0000/>
+Uhuge#0000
+</a>
+</span>
+<a href=/maps/6316456/>
+<img class=map-img src=https://imgur.com/sTc60j8.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6316456/>@6316456</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/ligthjj-0000/>Ligthjj#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1096959105064767619/Captura_de_pantalla_909.png rel=noreferrer target=_blank>63.16</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/batata-4826/>Batata#4826</a></td><td>64.26</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/kaanov-9473/>Kaanov#9473</a></td><td>65.18</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/swade-1794/>Swade#1794</a></td><td>66.35</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/doug10-9275/>Doug10#9275</a></td><td>68.71</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/vintage-0246/>
+Vintage#0246
+</a>
+</span>
+<a href=/maps/6534290/>
+<img class=map-img src=https://imgur.com/s3TK6bT.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6534290/>@6534290</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/ravenna-6682/>Ravenna#6682</a></td><td>52.73</td></tr><tr>
+<td scope=row>2</td><td><a href=/players/pancarhamuru-5859/>Pancarhamuru#5859</a></td><td>56.16</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/zeroxst-7171/>Zeroxst#7171</a></td><td>62.57</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/kaanov-9473/>Kaanov#9473</a></td><td>63.91</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/hakanozdemir-0000/>Hakanozdemir#0000</a></td><td>64.67</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/uhuge-0000/>
+Uhuge#0000
+</a>
+</span>
+<a href=/maps/6608954/>
+<img class=map-img src=https://imgur.com/JiGDj4c.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6608954/>@6608954</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1004413754919899206/wr_6608954_50.805.png rel=noreferrer target=_blank>50.81</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/verstappen-5761/>Verstappen#5761</a></td><td>51.64</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/nusretttttt-0000/>Nusretttttt#0000</a></td><td>53.89</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/jeisonequix-0000/>Jeisonequix#0000</a></td><td>56.77</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/csy40-3964/>Csy40#3964</a></td><td>56.91</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/jasseh-0000/>
+Jasseh#0000
+</a>
+</span>
+<a href=/maps/6650429/>
+<img class=map-img src=https://imgur.com/iC3kIU1.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6650429/>@6650429</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1139615362632126527/6650429_26397.png rel=noreferrer target=_blank>26.39</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/potjkb-0000/>Potjkb#0000</a></td><td><a href=https://prnt.sc/kRUsBAxW4Knr rel=noreferrer target=_blank>32.17</a></td></tr><tr>
+<td scope=row>3</td><td><a href=/players/d8_simekson-3622/>D8_simekson#3622</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1115468991528452106/image.png rel=noreferrer target=_blank>33.25</a></td></tr><tr>
+<td scope=row>4</td><td><a href=/players/jasseh-0000/>Jasseh#0000</a></td><td>33.86</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/elmattjuan-0000/>Elmattjuan#0000</a></td><td>34.96</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/currint-0000/>
+Currint#0000
+</a>
+</span>
+<a href=/maps/6661142/>
+<img class=map-img src=https://imgur.com/6Jgmaau.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6661142/>@6661142</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/maxxxiee-0000/>Maxxxiee#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/709224606615207937/1156180360271511603/6661142_28.68.mp4 rel=noreferrer target=_blank class=rec-video-link>28.68</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/kc_kc-0000/>Kc_kc#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1156027096141922324/image.png rel=noreferrer target=_blank>29.44</a></td></tr><tr>
+<td scope=row>3</td><td><a href=/players/isimyok22-0000/>Isimyok22#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1073974655062388816/Transformice_31.01.2023_00_14_06.png rel=noreferrer target=_blank>30.10</a></td></tr><tr>
+<td scope=row>4</td><td><a href=/players/brown-0881/>Brown#0881</a></td><td>30.31</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/valkyrie-1321/>Valkyrie#1321</a></td><td>30.92</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/currint-0000/>
+Currint#0000
+</a>
+</span>
+<a href=/maps/6661151/>
+<img class=map-img src=https://imgur.com/sk8CCSK.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6661151/>@6661151</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/killize-0000/>Killize#0000</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/1144087359659454475/Captura_de_tela_2023-08-23_204946.png rel=noreferrer target=_blank>48.61</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/luisalex-3532/>Luisalex#3532</a></td><td>49.01</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/toximon2-0000/>Toximon2#0000</a></td><td>50.96</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/kess_d-0984/>Kess_d#0984</a></td><td>51.71</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/kaanov-9473/>Kaanov#9473</a></td><td>53.57</td></tr></tbody></table></div></div><div class="markdown book-post small-map">
+<span>
+Author:
+<a href=/authors/currint-0000/>
+Currint#0000
+</a>
+</span>
+<a href=/maps/6661155/>
+<img class=map-img src=https://imgur.com/fBGYkrO.png>
+</a>
+<div class=map-body>
+<h2 class=map-title>
+<a href=/maps/6661155/>@6661155</a>
+</h2><table class=table>
+<thead>
+<tr>
+<th scope=col>#</th><th scope=col>Name</th><th scope=col>Time</th></tr></thead><tbody>
+<tr>
+<td scope=row>1</td><td><a href=/players/ejsner-8749/>Ejsner#8749</a></td><td><a href=https://cdn.discordapp.xyz/attachments/816071510645145630/931049505577664532/Screenshot_70.png rel=noreferrer target=_blank>63.20</a></td></tr><tr>
+<td scope=row>2</td><td><a href=/players/zed-6594/>Zed#6594</a></td><td>65.24</td></tr><tr>
+<td scope=row>3</td><td><a href=/players/roxwoon-0000/>Roxwoon#0000</a></td><td>67.92</td></tr><tr>
+<td scope=row>4</td><td><a href=/players/pig-5064/>Pig#5064</a></td><td>70.70</td></tr><tr>
+<td scope=row>5</td><td><a href=/players/dermanbatman-0000/>Dermanbatman#0000</a></td><td>70.97</td></tr></tbody></table></div></div></div><ul class=pagination>
+<li class=page-item>
+<a href=/categories/parkour/ class=page-link aria-label=First><span aria-hidden=true>&#171;&#171;</span></a>
+</li><li class="page-item disabled">
+<a class=page-link aria-label=Previous><span aria-hidden=true>&#171;</span></a>
+</li><li class="page-item active">
+<a class=page-link href=/categories/parkour/>1</a>
+</li><li class=page-item>
+<a class=page-link href=/categories/parkour/page/2/>2</a>
+</li><li class=page-item>
+<a class=page-link href=/categories/parkour/page/3/>3</a>
+</li><li class="page-item disabled">
+<span aria-hidden=true>&nbsp;&mldr;&nbsp;</span>
+</li><li class=page-item>
+<a class=page-link href=/categories/parkour/page/19/>19</a>
+</li><li class=page-item>
+<a href=/categories/parkour/page/2/ class=page-link aria-label=Next><span aria-hidden=true>&#187;</span></a>
+</li><li class=page-item>
+<a href=/categories/parkour/page/19/ class=page-link aria-label=Last><span aria-hidden=true>&#187;&#187;</span></a>
+</li><select class=pagination-list><option value=1 selected>1</option><option value=2>2</option><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option><option value=16>16</option><option value=17>17</option><option value=18>18</option><option value=19>19</option></select>
+</ul><footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+</div><hr>
+<p>
+All artworks belong to their respective creators.
+<br>
+</p><div class=text-right>
+<i>Last updated on December 27, 2025 at 21:02</i>
+</div></footer><label for=menu-control class="hidden book-menu-overlay"></label>
+</div></main><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+</body></html>
