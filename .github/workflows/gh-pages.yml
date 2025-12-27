@@ -1,28 +1,45 @@
 name: github pages
 
 on:
+  push:
+    branches:
+    - master
+
   repository_dispatch:
     types: [bot_update]
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
         with:
           submodules: true  # Fetch Hugo themes
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-      - name: Use Node.js 8.x
+      - name: Checkout Hugo Data
+        uses: actions/checkout@v6
+        with:
+          repository: https://github.com/TFMRecords/json-data
+          path: ./data/
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Remove .git
+        run: rm -r ./data/.git/
+
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: 8.x
-      
+          node-version: 16.x
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.70.0'
+          hugo-version: '0.93.0'
           extended: true
       - run: node update-pages.js
 
@@ -30,10 +47,7 @@ jobs:
         run: hugo --minify
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          external_repository: webninjasi/tfmrecords
-          publish_branch: master
-          publish_dir: ./public
-          full_commit_message: Update ${{ github.event.head_commit.id }}
+          branch: gh-pages
+          folder: public
